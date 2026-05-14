@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment Priority Sorter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f0;
+      --bg-tertiary: #eeede8;
+      --text-primary: #1a1a18;
+      --text-secondary: #6b6b67;
+      --text-tertiary: #9e9e9a;
+      --border-light: rgba(0,0,0,0.1);
+      --border-mid: rgba(0,0,0,0.18);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #1e1e1c;
+        --bg-secondary: #2a2a27;
+        --bg-tertiary: #242422;
+        --text-primary: #f0efe8;
+        --text-secondary: #a8a8a2;
+        --text-tertiary: #6e6e6a;
+        --border-light: rgba(255,255,255,0.1);
+        --border-mid: rgba(255,255,255,0.18);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .page { max-width: 680px; margin: 0 auto; }
+
+    .header { margin-bottom: 1.5rem; }
+    .header h1 { font-size: 22px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+    .header p { font-size: 14px; color: var(--text-secondary); }
+
+    .form-card {
+      background: var(--bg-primary);
+      border: 0.5px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .name-row { margin-bottom: 1rem; }
+
+    input[type=text], input[type=number] {
+      width: 100%;
+      font-size: 15px;
+      font-family: var(--font);
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      border: 0.5px solid var(--border-mid);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    input[type=text]:focus, input[type=number]:focus {
+      border-color: #7F77DD;
+      box-shadow: 0 0 0 3px rgba(127,119,221,0.15);
+    }
+
+    .sliders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .slider-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .slider-row { display: flex; align-items: center; gap: 8px; }
+
+    input[type=range] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: var(--border-light);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #7F77DD;
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #7F77DD;
+      border: 2px solid var(--bg-primary);
+      cursor: pointer;
+    }
+
+    .slider-val {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      min-width: 38px;
+      text-align: right;
+    }
+
+    .time-note { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+
+    .days-input-wrap { display: flex; align-items: center; gap: 8px; }
+    .days-input-wrap input[type=number] { width: 80px; text-align: center; }
+
+    .days-badge {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .days-critical { background: #FCEBEB; color: #791F1F; }
+    .days-soon     { background: #FAEEDA; color: #633806; }
+    .days-ok       { background: #EAF3DE; color: #27500A; }
+
+    button {
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: transparent;
+      border: 0.5px solid var(--border-mid);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    button:hover { background: var(--bg-secondary); }
+    button:active { transform: scale(0.98); }
+
+    .add-btn { width: 100%; justify-content: center; }
+
+    .weights-section { margin-bottom: 1.5rem; }
+    .weights-toggle { margin-bottom: 0.75rem; }
+
+    .weights-grid { display: none; gap: 1rem; }
+    .weights-grid.open { display: grid; grid-template-columns: 1fr 1fr; }
+    .w-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.75rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-tertiary);
+      font-size: 14px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border: 0.5px solid var(--border-light);
+    }
+
+    .assignment-card {
+      background: var(--bg-primary);
+      border: 0.5px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .assignment-card:hover { border-color: var(--border-mid); }
+
+    .rank-badge {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 500;
+      flex-shrink: 0;
+    }
+    .rank-1 { background: #FAC775; color: #633806; }
+    .rank-2 { background: #D3D1C7; color: #444441; }
+    .rank-3 { background: #F0997B; color: #4A1B0C; }
+    .rank-n { background: var(--bg-secondary); color: var(--text-secondary); }
+
+    .card-main { flex: 1; min-width: 0; }
+    .card-name {
+      font-size: 15px; font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .card-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .chip { font-size: 12px; padding: 3px 8px; border-radius: 20px; }
+    .chip-urgency    { background: #FCEBEB; color: #791F1F; }
+    .chip-difficulty { background: #FAEEDA; color: #633806; }
+    .chip-time       { background: #E6F1FB; color: #0C447C; }
+    .chip-enjoyment  { background: #EAF3DE; color: #27500A; }
+
+    .score-bar { height: 3px; background: var(--border-light); border-radius: 2px; margin-top: 6px; }
+    .score-bar-fill { height: 100%; border-radius: 2px; background: #7F77DD; transition: width 0.4s ease; }
+
+    .score-display { text-align: right; flex-shrink: 0; }
+    .score-num { font-size: 18px; font-weight: 500; color: var(--text-primary); }
+    .score-label { font-size: 11px; color: var(--text-tertiary); }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      color: var(--text-tertiary);
+      border-radius: 6px;
+      flex-shrink: 0;
+      transition: color 0.15s, background 0.15s;
+    }
+    .delete-btn:hover { color: #E24B4A; background: #FCEBEB; }
+
+    @media (max-width: 480px) {
+      .sliders-grid { grid-template-columns: 1fr; }
+      .weights-grid.open { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Assignment priority sorter</h1>
+    <p>Add your assignments — get a ranked study order based on what matters most.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-title">Add assignment</div>
+    <div class="name-row">
+      <input type="text" id="aname" placeholder="Assignment name..." />
+    </div>
+    <div class="sliders-grid">
+      <div class="slider-group">
+        <label>Days until due</label>
+        <div class="days-input-wrap">
+          <input type="number" id="s-days" min="0" max="365" value="7" oninput="updateDaysBadge()" />
+          <span id="days-badge" class="days-badge days-soon">1 week</span>
+        </div>
+        <div class="time-note">0 = due today · enter any number of days</div>
+      </div>
+      <div class="slider-group">
+        <label>Difficulty</label>
+        <div class="slider-row">
+          <input type="range" min="0" max="10" step="1" value="5" id="s-difficulty" oninput="document.getElementById('v-difficulty').textContent=this.value" />
+          <span class="slider-val" id="v-difficulty">5</span>
+        </div>
+        <div class="time-note">0 = very easy · 10 = very hard</div>
+      </div>
+      <div class="slider-group">
+        <label>Time needed <span style="font-size:11px;color:var(--text-tertiary)">(hours)</span></label>
+        <div class="slider-row">
+          <input type="range" min="0.5" max="20" step="0.5" value="3" id="s-time" oninput="document.getElementById('v-time').textContent=parseFloat(this.value).toFixed(1)+'h'" />
+          <span class="slider-val" id="v-time">3.0h</span>
+        </div>
+        <div class="time-note">0.5 = quick · 20 = marathon session</div>
+      </div>
+      <div class="slider-group">
+        <label>Enjoyment</label>
+        <div class="slider-row">
+          <input type="range" min="0" max="10" step="1" value="5" id="s-enjoyment" oninput="document.getElementById('v-enjoyment').textContent=this.value" />
+          <span class="slider-val" id="v-enjoyment">5</span>
+        </div>
+        <div class="time-note">0 = hate it · 10 = love it</div>
+      </div>
+    </div>
+    <button class="add-btn" onclick="addAssignment()">
+      <i class="ti ti-plus" aria-hidden="true"></i> Add assignment
+    </button>
+  </div>
+
+  <div class="weights-section">
+    <button class="weights-toggle" onclick="toggleWeights()">
+      <i class="ti ti-settings" aria-hidden="true"></i> Adjust weights
+    </button>
+    <div class="weights-grid" id="weights-grid">
+      <div class="slider-group">
+        <div class="w-label">Urgency weight: <span id="wv-urgency">40</span>%</div>
+        <input type="range" min="0" max="100" step="5" value="40" id="w-urgency" oninput="document.getElementById('wv-urgency').textContent=this.value;rerankAll()" />
+      </div>
+      <div class="slider-group">
+        <div class="w-label">Difficulty weight: <span id="wv-difficulty">25</span>%</div>
+        <input type="range" min="0" max="100" step="5" value="25" id="w-difficulty" oninput="document.getElementById('wv-difficulty').textContent=this.value;rerankAll()" />
+      </div>
+      <div class="slider-group">
+        <div class="w-label">Time weight: <span id="wv-time">20</span>%</div>
+        <input type="range" min="0" max="100" step="5" value="20" id="w-time" oninput="document.getElementById('wv-time').textContent=this.value;rerankAll()" />
+      </div>
+      <div class="slider-group">
+        <div class="w-label">Enjoyment weight: <span id="wv-enjoyment">15</span>%</div>
+        <input type="range" min="0" max="100" step="5" value="15" id="w-enjoyment" oninput="document.getElementById('wv-enjoyment').textContent=this.value;rerankAll()" />
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Ranked list</div>
+  <div id="list-container">
+    <div class="empty-state">
+      <i class="ti ti-stack-2" style="font-size:28px;display:block;margin-bottom:8px" aria-hidden="true"></i>
+      No assignments yet — add one above
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'assignment-sorter-data';
+
+  function save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(assignments));
+  }
+
+  function load() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    } catch { return []; }
+  }
+
+  let assignments = load();
+
+  function updateDaysBadge() {
+    const d = parseInt(document.getElementById('s-days').value) || 0;
+    const badge = document.getElementById('days-badge');
+    if (d === 0)       { badge.textContent = 'today!';    badge.className = 'days-badge days-critical'; }
+    else if (d === 1)  { badge.textContent = 'tomorrow';  badge.className = 'days-badge days-critical'; }
+    else if (d <= 3)   { badge.textContent = d + ' days'; badge.className = 'days-badge days-critical'; }
+    else if (d <= 7)   { badge.textContent = d + ' days'; badge.className = 'days-badge days-soon'; }
+    else if (d <= 30)  { badge.textContent = d + ' days'; badge.className = 'days-badge days-ok'; }
+    else { const w = Math.round(d / 7); badge.textContent = w + ' weeks'; badge.className = 'days-badge days-ok'; }
+  }
+
+  function toggleWeights() {
+    document.getElementById('weights-grid').classList.toggle('open');
+  }
+
+  function getWeights() {
+    const u = parseInt(document.getElementById('w-urgency').value);
+    const d = parseInt(document.getElementById('w-difficulty').value);
+    const t = parseInt(document.getElementById('w-time').value);
+    const e = parseInt(document.getElementById('w-enjoyment').value);
+    const total = u + d + t + e || 1;
+    return { u: u/total, d: d/total, t: t/total, e: e/total };
+  }
+
+  function daysToUrgency(days) {
+    if (days <= 0)  return 10;
+    if (days === 1) return 9.5;
+    if (days <= 3)  return 8.5;
+    if (days <= 7)  return 7;
+    if (days <= 14) return 5;
+    if (days <= 30) return 3;
+    if (days <= 60) return 1.5;
+    return 0.5;
+  }
+
+  function scoreAssignment(a, weights) {
+    const urgencyNorm = daysToUrgency(a.days);
+    const timeNorm = Math.min(a.time / 20, 1) * 10;
+    const enjoyBonus = (a.enjoyment / 10) * 2;
+    const raw = (urgencyNorm * weights.u + a.difficulty * weights.d + timeNorm * weights.t) * 10 - enjoyBonus;
+    return Math.round(Math.max(0, Math.min(100, raw * 1.12)));
+  }
+
+  function addAssignment() {
+    const name = document.getElementById('aname').value.trim();
+    if (!name) { document.getElementById('aname').focus(); return; }
+    const days = parseInt(document.getElementById('s-days').value);
+    assignments.push({
+      id: Date.now(),
+      name,
+      days: isNaN(days) ? 7 : Math.max(0, days),
+      difficulty: parseInt(document.getElementById('s-difficulty').value),
+      time: parseFloat(document.getElementById('s-time').value),
+      enjoyment: parseInt(document.getElementById('s-enjoyment').value)
+    });
+    document.getElementById('aname').value = '';
+    save();
+    renderList();
+  }
+
+  document.getElementById('aname').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addAssignment();
+  });
+
+  function deleteAssignment(id) {
+    assignments = assignments.filter(a => a.id !== id);
+    save();
+    renderList();
+  }
+
+  function rerankAll() { renderList(); }
+
+  function daysLabel(d) {
+    if (d === 0) return 'due today';
+    if (d === 1) return 'due tomorrow';
+    return 'due in ' + d + 'd';
+  }
+
+  function chipUrgencyClass(d) {
+    if (d <= 3) return 'chip chip-urgency';
+    if (d <= 7) return 'chip chip-difficulty';
+    return 'chip chip-enjoyment';
+  }
+
+  function renderList() {
+    const w = getWeights();
+    const sorted = [...assignments]
+      .map(a => ({ ...a, score: scoreAssignment(a, w) }))
+      .sort((a, b) => b.score - a.score);
+    const container = document.getElementById('list-container');
+    if (!sorted.length) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <i class="ti ti-stack-2" style="font-size:28px;display:block;margin-bottom:8px" aria-hidden="true"></i>
+          No assignments yet — add one above
+        </div>`;
+      return;
+    }
+    const maxScore = sorted[0].score || 1;
+    container.innerHTML = sorted.map((a, i) => {
+      const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-n';
+      const barPct = Math.round((a.score / maxScore) * 100);
+      const urgChip = chipUrgencyClass(a.days);
+      return `
+        <div class="assignment-card">
+          <div class="rank-badge ${rankClass}">${i + 1}</div>
+          <div class="card-main">
+            <div class="card-name">${a.name}</div>
+            <div class="card-chips">
+              <span class="${urgChip}"><i class="ti ti-calendar-due" style="font-size:11px" aria-hidden="true"></i> ${daysLabel(a.days)}</span>
+              <span class="chip chip-difficulty"><i class="ti ti-brain" style="font-size:11px" aria-hidden="true"></i> difficulty ${a.difficulty}/10</span>
+              <span class="chip chip-time"><i class="ti ti-hourglass" style="font-size:11px" aria-hidden="true"></i> ${a.time.toFixed(1)}h</span>
+              <span class="chip chip-enjoyment"><i class="ti ti-mood-smile" style="font-size:11px" aria-hidden="true"></i> enjoyment ${a.enjoyment}/10</span>
+            </div>
+            <div class="score-bar"><div class="score-bar-fill" style="width:${barPct}%"></div></div>
+          </div>
+          <div class="score-display">
+            <div class="score-num">${a.score}</div>
+            <div class="score-label">priority</div>
+          </div>
+          <button class="delete-btn" onclick="deleteAssignment(${a.id})" aria-label="Remove ${a.name}">
+            <i class="ti ti-trash" style="font-size:16px" aria-hidden="true"></i>
+          </button>
+        </div>`;
+    }).join('');
+  }
+
+  updateDaysBadge();
+  if (assignments.length) renderList();
+</script>
+</body>
+</html>
