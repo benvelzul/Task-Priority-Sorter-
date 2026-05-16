@@ -20,6 +20,9 @@
       --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
       --accent: #7F77DD;
       --accent-light: rgba(127,119,221,0.15);
+      --c-work:  #7F77DD;
+      --c-short: #4CAF82;
+      --c-long:  #F09840;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -37,30 +40,29 @@
     body { font-family: var(--font); background: var(--bg-tertiary); color: var(--text-primary); min-height: 100vh; padding: 2rem 1rem 4rem; }
     .page { max-width: 700px; margin: 0 auto; }
 
-    /* TABS */
+    /* ── TABS ── */
     .tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 4px; border: 0.5px solid var(--border-light); }
     .tab-btn { flex: 1; padding: 8px 12px; border: none; background: transparent; border-radius: 10px; font-size: 13px; font-family: var(--font); color: var(--text-secondary); cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
     .tab-btn.active { background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 500; }
-    .tab-btn:hover:not(.active) { color: var(--text-primary); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* HEADER */
+    /* ── HEADER ── */
     .header { margin-bottom: 1.5rem; }
     .header h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
-    .header p { font-size: 14px; color: var(--text-secondary); }
+    .header p  { font-size: 14px; color: var(--text-secondary); }
 
-    /* CARDS */
+    /* ── CARD ── */
     .card { background: var(--bg-primary); border: 0.5px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.5rem; }
     .card-title { font-size: 11px; font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.07em; }
 
-    /* INPUTS */
-    input[type=text], input[type=number], input[type=datetime-local], select, textarea {
+    /* ── INPUTS ── */
+    input[type=text], input[type=number], input[type=datetime-local], select {
       width: 100%; font-size: 14px; font-family: var(--font);
       color: var(--text-primary); background: var(--bg-primary);
       border: 0.5px solid var(--border-mid); border-radius: var(--radius-md);
       padding: 8px 12px; outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color .15s, box-shadow .15s;
       -webkit-appearance: none;
     }
     input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
@@ -68,20 +70,20 @@
     .input-row { margin-bottom: 1rem; }
     .input-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 5px; display: block; }
 
-    /* SLIDERS */
+    /* ── SLIDERS ── */
     .sliders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
     .slider-group label { display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
     .slider-row { display: flex; align-items: center; gap: 8px; }
     input[type=range] { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; background: var(--border-light); border-radius: 2px; outline: none; cursor: pointer; }
-    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary); box-shadow: 0 1px 3px rgba(0,0,0,.2); cursor: pointer; }
     input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary); cursor: pointer; }
     .slider-val { font-size: 13px; font-weight: 500; min-width: 38px; text-align: right; }
     .hint { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
 
-    /* BUTTONS */
-    button { font-family: var(--font); font-size: 14px; color: var(--text-primary); background: transparent; border: 0.5px solid var(--border-mid); border-radius: var(--radius-md); padding: 8px 16px; cursor: pointer; transition: background 0.15s, transform 0.1s; display: inline-flex; align-items: center; gap: 6px; }
+    /* ── BUTTONS ── */
+    button { font-family: var(--font); font-size: 14px; color: var(--text-primary); background: transparent; border: 0.5px solid var(--border-mid); border-radius: var(--radius-md); padding: 8px 16px; cursor: pointer; transition: background .15s, transform .1s; display: inline-flex; align-items: center; gap: 6px; }
     button:hover { background: var(--bg-secondary); }
-    button:active { transform: scale(0.98); }
+    button:active { transform: scale(.98); }
     .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
     .btn-primary:hover { background: #6e66cc; }
     .btn-full { width: 100%; justify-content: center; }
@@ -90,7 +92,7 @@
     .btn-icon:hover { color: var(--text-primary); background: var(--bg-secondary); }
     .btn-danger:hover { color: #E24B4A !important; background: #FCEBEB !important; }
 
-    /* CHIPS */
+    /* ── CHIPS ── */
     .chip { font-size: 12px; padding: 3px 8px; border-radius: 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 3px; }
     .chip-red    { background: #FCEBEB; color: #791F1F; }
     .chip-orange { background: #FAEEDA; color: #633806; }
@@ -98,16 +100,13 @@
     .chip-green  { background: #EAF3DE; color: #27500A; }
     .chip-purple { background: #EEEAFC; color: #3D2D9B; }
 
-    /* SECTION LABEL */
-    .section-label { font-size: 11px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.75rem; }
-
-    /* EMPTY STATE */
+    .section-label { font-size: 11px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .75rem; }
     .empty-state { text-align: center; padding: 2.5rem 1rem; color: var(--text-tertiary); font-size: 14px; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 0.5px solid var(--border-light); }
 
-    /* ASSIGNMENT CARDS */
-    .assignment-card { background: var(--bg-primary); border: 0.5px solid var(--border-light); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 0.75rem; transition: border-color 0.15s, opacity 0.2s; }
+    /* ── ASSIGNMENT CARDS ── */
+    .assignment-card { background: var(--bg-primary); border: 0.5px solid var(--border-light); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: .75rem; transition: border-color .15s, opacity .2s; }
     .assignment-card:hover { border-color: var(--border-mid); }
-    .assignment-card.done { opacity: 0.5; }
+    .assignment-card.done { opacity: .5; }
     .card-top { display: flex; align-items: flex-start; gap: 10px; }
     .rank-badge { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 2px; }
     .rank-1 { background: #FAC775; color: #633806; }
@@ -121,48 +120,95 @@
     .score-display { text-align: right; flex-shrink: 0; min-width: 44px; }
     .score-num { font-size: 17px; font-weight: 500; }
     .score-label { font-size: 11px; color: var(--text-tertiary); }
-    .card-actions { display: flex; gap: 0; flex-shrink: 0; }
+    .card-actions { display: flex; flex-shrink: 0; }
     .score-bar { height: 3px; background: var(--border-light); border-radius: 2px; }
-    .score-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width 0.4s; }
+    .score-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width .4s; }
     .studied-label { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
 
-    /* CHECKLIST */
+    /* ── CHECKLIST ── */
     .checklist-area { margin-top: 10px; padding-top: 10px; border-top: 0.5px solid var(--border-light); display: none; }
     .checklist-area.open { display: block; }
     .checklist-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
     .checklist-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
-    .checklist-item .cl-text { font-size: 14px; flex: 1; }
-    .checklist-item .cl-text.checked { text-decoration: line-through; color: var(--text-tertiary); }
+    .cl-text { font-size: 14px; flex: 1; }
+    .cl-text.checked { text-decoration: line-through; color: var(--text-tertiary); }
     .checklist-add-row { display: flex; gap: 6px; margin-top: 8px; }
     .checklist-add-row input { font-size: 13px; }
 
-    /* WEIGHTS */
-    .weights-toggle { margin-bottom: 0.75rem; }
+    /* ── WEIGHTS ── */
+    .weights-toggle { margin-bottom: .75rem; }
     .weights-grid { display: none; gap: 1rem; margin-bottom: 1rem; }
     .weights-grid.open { display: grid; grid-template-columns: 1fr 1fr; }
     .w-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
 
-    /* TIMER */
-    .timer-select { margin-bottom: 1rem; }
-    .timer-session-row { display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
-    .timer-session-row label { font-size: 13px; color: var(--text-secondary); white-space: nowrap; }
-    .timer-session-row input { width: 70px; text-align: center; }
-    .timer-display { text-align: center; padding: 1.5rem 1rem; }
-    .timer-task-name { font-size: 14px; color: var(--text-secondary); margin-bottom: 0.5rem; min-height: 20px; }
-    .timer-clock { font-size: 56px; font-weight: 300; letter-spacing: -2px; font-variant-numeric: tabular-nums; margin-bottom: 1rem; transition: color 0.3s; }
-    .timer-clock.running { color: var(--accent); }
-    .timer-controls { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .timer-progress-wrap { margin: 1rem 0 0; }
-    .timer-progress-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; display: flex; justify-content: space-between; }
-    .timer-progress-bar { height: 6px; background: var(--border-light); border-radius: 3px; }
-    .timer-progress-fill { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.5s; }
+    /* ══════════════════════════════════════
+       POMODORO TIMER
+    ══════════════════════════════════════ */
+
+    /* mode pill switcher */
+    .pomo-modes { display: flex; gap: 4px; margin-bottom: 1.25rem; background: var(--bg-secondary); border-radius: var(--radius-md); padding: 3px; }
+    .pomo-mode-btn { flex: 1; padding: 6px 4px; border: none; background: transparent; border-radius: 7px; font-size: 12px; font-family: var(--font); color: var(--text-secondary); cursor: pointer; transition: all .15s; font-weight: 500; }
+    .pomo-mode-btn.active { background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+
+    /* ring */
+    .pomo-ring-wrap { position: relative; width: 210px; height: 210px; margin: 0 auto 1rem; }
+    .pomo-ring-wrap svg { transform: rotate(-90deg); }
+    .pomo-ring-bg   { fill: none; stroke: var(--border-light); stroke-width: 10; }
+    .pomo-ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s linear, stroke .4s; }
+    .pomo-ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+    .pomo-clock { font-size: 52px; font-weight: 300; letter-spacing: -2px; font-variant-numeric: tabular-nums; line-height: 1; transition: color .4s; }
+    .pomo-mode-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-tertiary); font-weight: 600; }
+
+    /* cycle dots */
+    .pomo-dots { display: flex; gap: 8px; justify-content: center; margin-bottom: .4rem; }
+    .pomo-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--border-mid); transition: background .3s, transform .3s; }
+    .pomo-dot.filled  { background: var(--c-work); transform: scale(1.1); }
+    .pomo-dot.current { background: var(--c-work); opacity: .35; }
+    .pomo-cycle-info { text-align: center; font-size: 12px; color: var(--text-tertiary); margin-bottom: 1rem; }
+
+    /* controls */
+    .pomo-controls { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .pomo-btn-start  { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .pomo-btn-start:hover { background: #6e66cc; }
+
+    /* task + progress */
+    .pomo-task-row { margin-bottom: 1rem; }
+    .pomo-progress-wrap { margin-bottom: 1rem; }
+    .pomo-progress-lbl  { font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; display: flex; justify-content: space-between; }
+    .pomo-progress-bar  { height: 5px; background: var(--border-light); border-radius: 3px; }
+    .pomo-progress-fill { height: 100%; border-radius: 3px; transition: width .5s; }
+
+    /* settings row */
+    .pomo-cfg { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .75rem; padding-top: 1rem; border-top: 0.5px solid var(--border-light); }
+    .pomo-cfg-item label { font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 4px; }
+    .pomo-cfg-item input { font-size: 13px; text-align: center; }
+
+    /* per-mode accent colours */
+    .pomo-card[data-mode=work]  .pomo-ring-fill { stroke: var(--c-work);  }
+    .pomo-card[data-mode=work]  .pomo-clock     { color:  var(--c-work);  }
+    .pomo-card[data-mode=work]  .pomo-progress-fill { background: var(--c-work); }
+    .pomo-card[data-mode=short] .pomo-ring-fill { stroke: var(--c-short); }
+    .pomo-card[data-mode=short] .pomo-clock     { color:  var(--c-short); }
+    .pomo-card[data-mode=short] .pomo-progress-fill { background: var(--c-short); }
+    .pomo-card[data-mode=long]  .pomo-ring-fill { stroke: var(--c-long);  }
+    .pomo-card[data-mode=long]  .pomo-clock     { color:  var(--c-long);  }
+    .pomo-card[data-mode=long]  .pomo-progress-fill { background: var(--c-long); }
+
+    /* notification banner */
+    .pomo-banner { display: none; text-align: center; padding: 10px 16px; border-radius: var(--radius-md); font-size: 14px; font-weight: 500; margin-bottom: 1rem; }
+    .pomo-banner.show { display: block; }
+    .pomo-banner.work  { background: #EEEAFC; color: #3D2D9B; }
+    .pomo-banner.short { background: #EAF3DE; color: #27500A; }
+    .pomo-banner.long  { background: #FAEEDA; color: #633806; }
+
+    /* log */
     .log-item { font-size: 13px; color: var(--text-secondary); padding: 6px 0; border-bottom: 0.5px solid var(--border-light); display: flex; justify-content: space-between; gap: 8px; }
     .log-item:last-child { border-bottom: none; }
 
-    /* MODAL */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
+    /* ── MODAL ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
     .modal-overlay.open { display: flex; }
-    .modal { background: var(--bg-primary); border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+    .modal { background: var(--bg-primary); border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,.2); }
     .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
     .modal-title { font-size: 16px; font-weight: 500; }
     .modal-footer { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1.25rem; padding-top: 1rem; border-top: 0.5px solid var(--border-light); }
@@ -170,9 +216,10 @@
     @media (max-width: 520px) {
       .sliders-grid { grid-template-columns: 1fr; }
       .weights-grid.open { grid-template-columns: 1fr; }
-      .timer-clock { font-size: 42px; }
+      .pomo-clock { font-size: 40px; }
       .tab-btn span { display: none; }
       .card-actions .btn-icon { padding: 4px; }
+      .pomo-cfg { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -185,11 +232,11 @@
   </div>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('assignments', this)"><i class="ti ti-list-check"></i> <span>Assignments</span></button>
-    <button class="tab-btn" onclick="switchTab('timer', this)"><i class="ti ti-clock-play"></i> <span>Study Timer</span></button>
+    <button class="tab-btn active" onclick="switchTab('assignments',this)"><i class="ti ti-list-check"></i> <span>Assignments</span></button>
+    <button class="tab-btn" onclick="switchTab('timer',this)"><i class="ti ti-tomato"></i> <span>Pomodoro</span></button>
   </div>
 
-  <!-- ===== ASSIGNMENTS TAB ===== -->
+  <!-- ═══════════════ ASSIGNMENTS TAB ═══════════════ -->
   <div id="tab-assignments" class="tab-panel active">
 
     <div class="card">
@@ -259,48 +306,99 @@
     </div>
   </div>
 
-  <!-- ===== TIMER TAB ===== -->
+  <!-- ═══════════════ POMODORO TAB ═══════════════ -->
   <div id="tab-timer" class="tab-panel">
-    <div class="card">
-      <div class="card-title">Study Timer</div>
-      <div class="timer-select">
-        <label class="input-label">Assignment to work on</label>
-        <select id="timer-task-select" onchange="onTimerTaskChange()">
+
+    <div class="card pomo-card" id="pomo-card" data-mode="work">
+      <div class="card-title">🍅 Pomodoro Timer</div>
+
+      <!-- mode selector -->
+      <div class="pomo-modes">
+        <button class="pomo-mode-btn active" id="modetab-work"  onclick="pomoSwitchMode('work')">🍅 Focus (25 min)</button>
+        <button class="pomo-mode-btn"        id="modetab-short" onclick="pomoSwitchMode('short')">☕ Short break</button>
+        <button class="pomo-mode-btn"        id="modetab-long"  onclick="pomoSwitchMode('long')">🛋️ Long break</button>
+      </div>
+
+      <!-- notification banner -->
+      <div class="pomo-banner" id="pomo-banner"></div>
+
+      <!-- task picker -->
+      <div class="pomo-task-row">
+        <label class="input-label">Working on</label>
+        <select id="pomo-select" onchange="onPomoTaskChange()">
           <option value="">— pick an assignment —</option>
         </select>
       </div>
-      <div class="timer-session-row">
-        <label>Session length (min)</label>
-        <input type="number" id="timer-session-len" value="25" min="1" max="300" />
-      </div>
-      <div class="timer-display">
-        <div class="timer-task-name" id="timer-task-label">No task selected</div>
-        <div class="timer-clock" id="timer-clock">25:00</div>
-        <div class="timer-controls">
-          <button id="btn-start" onclick="timerStart()"><i class="ti ti-player-play"></i> Start</button>
-          <button id="btn-pause" onclick="timerPause()" style="display:none"><i class="ti ti-player-pause"></i> Pause</button>
-          <button onclick="timerReset()"><i class="ti ti-refresh"></i> Reset</button>
-          <button id="btn-finish" onclick="timerFinish()" class="btn-primary" style="display:none"><i class="ti ti-check"></i> Log time</button>
+
+      <!-- SVG ring clock -->
+      <div class="pomo-ring-wrap">
+        <svg width="210" height="210" viewBox="0 0 210 210">
+          <circle class="pomo-ring-bg"   cx="105" cy="105" r="92"/>
+          <circle class="pomo-ring-fill" cx="105" cy="105" r="92"
+            id="pomo-ring"
+            stroke-dasharray="578.05"
+            stroke-dashoffset="0"/>
+        </svg>
+        <div class="pomo-ring-center">
+          <div class="pomo-clock"    id="pomo-clock">25:00</div>
+          <div class="pomo-mode-lbl" id="pomo-mode-lbl">Focus</div>
         </div>
       </div>
-      <div class="timer-progress-wrap" id="timer-progress-wrap" style="display:none">
-        <div class="timer-progress-label">
-          <span>Time studied on this task</span>
-          <span id="timer-progress-text">0 / 0h</span>
+
+      <!-- cycle dots -->
+      <div class="pomo-dots">
+        <div class="pomo-dot current" id="pdot-0"></div>
+        <div class="pomo-dot"         id="pdot-1"></div>
+        <div class="pomo-dot"         id="pdot-2"></div>
+        <div class="pomo-dot"         id="pdot-3"></div>
+      </div>
+      <div class="pomo-cycle-info" id="pomo-cycle-info">Pomodoro 1 of 4 · complete 4 to earn a long break</div>
+
+      <!-- controls -->
+      <div class="pomo-controls">
+        <button class="pomo-btn-start" id="pomo-btn-start" onclick="pomoStart()"><i class="ti ti-player-play"></i> Start</button>
+        <button id="pomo-btn-pause" onclick="pomoPause()" style="display:none"><i class="ti ti-player-pause"></i> Pause</button>
+        <button onclick="pomoReset()"><i class="ti ti-refresh"></i> Reset</button>
+        <button onclick="pomoSkip()"><i class="ti ti-player-skip-forward"></i> Skip</button>
+      </div>
+
+      <!-- assignment study progress -->
+      <div class="pomo-progress-wrap" id="pomo-progress-wrap" style="display:none">
+        <div class="pomo-progress-lbl">
+          <span>Assignment progress</span>
+          <span id="pomo-progress-text">0 / 0h</span>
         </div>
-        <div class="timer-progress-bar"><div class="timer-progress-fill" id="timer-progress-fill" style="width:0%"></div></div>
+        <div class="pomo-progress-bar">
+          <div class="pomo-progress-fill" id="pomo-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- settings -->
+      <div class="pomo-cfg">
+        <div class="pomo-cfg-item">
+          <label>🍅 Focus (min)</label>
+          <input type="number" id="cfg-work"  value="25" min="1" max="90" onchange="pomoApplyCfg()" />
+        </div>
+        <div class="pomo-cfg-item">
+          <label>☕ Short break</label>
+          <input type="number" id="cfg-short" value="5"  min="1" max="30" onchange="pomoApplyCfg()" />
+        </div>
+        <div class="pomo-cfg-item">
+          <label>🛋️ Long break</label>
+          <input type="number" id="cfg-long"  value="15" min="5" max="60" onchange="pomoApplyCfg()" />
+        </div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-title">Session log</div>
-      <div id="timer-log-list"><div style="font-size:14px;color:var(--text-tertiary)">No sessions logged yet.</div></div>
+      <div id="pomo-log"><div style="font-size:14px;color:var(--text-tertiary)">No sessions logged yet.</div></div>
     </div>
   </div>
 
-</div>
+</div><!-- /page -->
 
-<!-- EDIT MODAL -->
+<!-- ═══════════════ EDIT MODAL ═══════════════ -->
 <div class="modal-overlay" id="edit-modal">
   <div class="modal">
     <div class="modal-header">
@@ -343,38 +441,43 @@
 </div>
 
 <script>
-// ─── STATE ────────────────────────────────────────────────
+/* ════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════ */
 const STORAGE_KEY = 'asgn-sorter-v2';
 function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(assignments)); }
 function load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
 
 let assignments = load().map(a => {
-  // migrate old format
   if (!a.dueISO && a.days != null) {
     const d = new Date(); d.setDate(d.getDate() + a.days); d.setHours(23,59,0,0);
     a.dueISO = d.toISOString();
   }
   if (!a.checklist) a.checklist = [];
-  if (a.studied == null) a.studied = 0;
-  if (a.done == null) a.done = false;
+  if (a.studied  == null) a.studied  = 0;
+  if (a.done     == null) a.done     = false;
   delete a.days;
   return a;
 });
 save();
 
 let openChecklists = new Set();
-let sessionLog = [];
+let sessionLog     = [];
 
-// ─── TABS ─────────────────────────────────────────────────
+/* ════════════════════════════════════════════
+   TABS
+════════════════════════════════════════════ */
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
-  if (name === 'timer') populateTimerSelect();
+  if (name === 'timer') populatePomoSelect();
 }
 
-// ─── WEIGHTS ──────────────────────────────────────────────
+/* ════════════════════════════════════════════
+   WEIGHTS
+════════════════════════════════════════════ */
 function toggleWeights() { document.getElementById('weights-grid').classList.toggle('open'); }
 function getWeights() {
   const u = +document.getElementById('w-urgency').value;
@@ -385,73 +488,70 @@ function getWeights() {
   return { u: u/total, d: d/total, t: t/total, e: e/total };
 }
 
-// ─── SCORING ──────────────────────────────────────────────
-function daysUntil(iso) {
-  if (!iso) return 999;
-  return (new Date(iso) - new Date()) / 86400000;
-}
+/* ════════════════════════════════════════════
+   SCORING
+════════════════════════════════════════════ */
+function daysUntil(iso) { return iso ? (new Date(iso) - new Date()) / 86400000 : 999; }
 function urgencyFromDays(d) {
-  if (d <= 0) return 10; if (d <= 1) return 9.5; if (d <= 3) return 8.5;
-  if (d <= 7) return 7; if (d <= 14) return 5; if (d <= 30) return 3;
+  if (d <= 0)  return 10; if (d <= 1)  return 9.5; if (d <= 3)  return 8.5;
+  if (d <= 7)  return 7;  if (d <= 14) return 5;   if (d <= 30) return 3;
   if (d <= 60) return 1.5; return 0.5;
 }
 function scoreAssignment(a, w) {
-  const days = daysUntil(a.dueISO);
-  const urg = urgencyFromDays(days);
-  const rem = Math.max(0, (a.time || 1) - (a.studied || 0));
-  const timeNorm = Math.min(rem / 20, 1) * 10;
-  const ej = ((a.enjoyment || 5) / 10) * 2;
-  const raw = (urg * w.u + (a.difficulty || 5) * w.d + timeNorm * w.t) * 10 - ej;
-  return Math.round(Math.max(0, Math.min(100, raw * 1.12)));
+  const urg     = urgencyFromDays(daysUntil(a.dueISO));
+  const rem     = Math.max(0, (a.time||1) - (a.studied||0));
+  const timeNrm = Math.min(rem / 20, 1) * 10;
+  const ej      = ((a.enjoyment||5) / 10) * 2;
+  return Math.round(Math.max(0, Math.min(100, (urg * w.u + (a.difficulty||5) * w.d + timeNrm * w.t) * 10 - ej) * 1.12));
 }
 
-// ─── DUE DATE LABEL ───────────────────────────────────────
+/* ════════════════════════════════════════════
+   DUE DATE LABEL
+════════════════════════════════════════════ */
 function dueDateLabel(iso) {
   if (!iso) return null;
-  const due = new Date(iso), now = new Date();
-  const diffH = (due - now) / 3600000;
-  const diffD = diffH / 24;
+  const due = new Date(iso), diffH = (due - new Date()) / 3600000;
   const dateStr = due.toLocaleDateString(undefined, { day:'2-digit', month:'2-digit', year:'numeric' });
   const timeStr = due.toLocaleTimeString(undefined, { hour:'2-digit', minute:'2-digit' });
-  const full = `${timeStr}  ${dateStr}`;
-  if (diffH < 0)   return { label:'Overdue — ' + full, cls:'chip-red' };
-  if (diffH < 24)  return { label:'Due in ' + Math.round(diffH) + 'h — ' + timeStr, cls:'chip-red' };
-  if (diffD < 4)   return { label:'Due in ' + Math.round(diffD) + 'd — ' + full, cls:'chip-orange' };
-  return { label: full, cls:'chip-green' };
+  const full    = `${timeStr}  ${dateStr}`;
+  if (diffH < 0)   return { label: 'Overdue — '        + full, cls: 'chip-red' };
+  if (diffH < 24)  return { label: 'Due in '+ Math.round(diffH) +'h — '+ timeStr, cls: 'chip-red' };
+  if (diffH < 96)  return { label: 'Due in '+ Math.round(diffH/24) +'d — '+ full, cls: 'chip-orange' };
+  return { label: full, cls: 'chip-green' };
 }
 
-// ─── ADD ──────────────────────────────────────────────────
-document.getElementById('aname').addEventListener('keydown', e => { if (e.key === 'Enter') addAssignment(); });
+/* ════════════════════════════════════════════
+   ADD / DELETE / DONE
+════════════════════════════════════════════ */
+document.getElementById('aname').addEventListener('keydown', e => { if (e.key==='Enter') addAssignment(); });
 function addAssignment() {
   const name = document.getElementById('aname').value.trim();
   if (!name) { document.getElementById('aname').focus(); return; }
-  const dueVal = document.getElementById('s-due').value;
+  const dv = document.getElementById('s-due').value;
   assignments.push({
     id: Date.now(), name,
-    dueISO: dueVal ? new Date(dueVal).toISOString() : null,
+    dueISO:     dv ? new Date(dv).toISOString() : null,
     difficulty: +document.getElementById('s-difficulty').value,
-    time: parseFloat(document.getElementById('s-time').value),
-    enjoyment: +document.getElementById('s-enjoyment').value,
+    time:       parseFloat(document.getElementById('s-time').value),
+    enjoyment:  +document.getElementById('s-enjoyment').value,
     checklist: [], studied: 0, done: false
   });
   document.getElementById('aname').value = '';
-  save(); renderList(); populateTimerSelect();
+  save(); renderList(); populatePomoSelect();
 }
-
-// ─── DELETE ───────────────────────────────────────────────
 function deleteAssignment(id) {
   if (!confirm('Delete this assignment?')) return;
   assignments = assignments.filter(a => a.id !== id);
-  save(); renderList(); populateTimerSelect();
+  save(); renderList(); populatePomoSelect();
 }
-
-// ─── TOGGLE DONE ──────────────────────────────────────────
 function toggleDone(id) {
   const a = assignments.find(a => a.id === id);
-  if (a) { a.done = !a.done; save(); renderList(); populateTimerSelect(); }
+  if (a) { a.done = !a.done; save(); renderList(); populatePomoSelect(); }
 }
 
-// ─── CHECKLIST ────────────────────────────────────────────
+/* ════════════════════════════════════════════
+   CHECKLIST
+════════════════════════════════════════════ */
 function toggleChecklist(id) {
   if (openChecklists.has(id)) openChecklists.delete(id); else openChecklists.add(id);
   const el = document.getElementById('cl-' + id);
@@ -473,7 +573,9 @@ function deleteClItem(aId, itemId) {
   a.checklist = a.checklist.filter(i => i.id !== itemId); save(); renderList();
 }
 
-// ─── EDIT MODAL ───────────────────────────────────────────
+/* ════════════════════════════════════════════
+   EDIT MODAL
+════════════════════════════════════════════ */
 let editingId = null;
 function openEditModal(id) {
   const a = assignments.find(a => a.id === id); if (!a) return;
@@ -481,36 +583,38 @@ function openEditModal(id) {
   document.getElementById('edit-name').value = a.name;
   if (a.dueISO) {
     const d = new Date(a.dueISO);
-    document.getElementById('edit-due').value = new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,16);
+    document.getElementById('edit-due').value = new Date(d - d.getTimezoneOffset()*60000).toISOString().slice(0,16);
   } else { document.getElementById('edit-due').value = ''; }
-  document.getElementById('edit-difficulty').value = a.difficulty;
+  document.getElementById('edit-difficulty').value  = a.difficulty;
   document.getElementById('edit-v-difficulty').textContent = a.difficulty;
-  document.getElementById('edit-time').value = a.time;
+  document.getElementById('edit-time').value        = a.time;
   document.getElementById('edit-v-time').textContent = parseFloat(a.time).toFixed(1);
-  document.getElementById('edit-enjoyment').value = a.enjoyment;
+  document.getElementById('edit-enjoyment').value   = a.enjoyment;
   document.getElementById('edit-v-enjoyment').textContent = a.enjoyment;
   document.getElementById('edit-modal').classList.add('open');
 }
 function closeEditModal() { editingId = null; document.getElementById('edit-modal').classList.remove('open'); }
 function saveEdit() {
   const a = assignments.find(a => a.id === editingId); if (!a) return;
-  const n = document.getElementById('edit-name').value.trim();
-  if (n) a.name = n;
+  const n = document.getElementById('edit-name').value.trim(); if (n) a.name = n;
   const dv = document.getElementById('edit-due').value;
-  a.dueISO = dv ? new Date(dv).toISOString() : null;
+  a.dueISO     = dv ? new Date(dv).toISOString() : null;
   a.difficulty = +document.getElementById('edit-difficulty').value;
-  a.time = parseFloat(document.getElementById('edit-time').value);
-  a.enjoyment = +document.getElementById('edit-enjoyment').value;
-  save(); renderList(); populateTimerSelect(); closeEditModal();
+  a.time       = parseFloat(document.getElementById('edit-time').value);
+  a.enjoyment  = +document.getElementById('edit-enjoyment').value;
+  save(); renderList(); populatePomoSelect(); closeEditModal();
 }
-document.getElementById('edit-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeEditModal(); });
+document.getElementById('edit-modal').addEventListener('click', e => { if (e.target===e.currentTarget) closeEditModal(); });
 
-// ─── RENDER ───────────────────────────────────────────────
+/* ════════════════════════════════════════════
+   RENDER LIST
+════════════════════════════════════════════ */
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 function renderList() {
   const w = getWeights();
-  const sorted = [...assignments].map(a => ({ ...a, score: a.done ? -1 : scoreAssignment(a, w) }))
+  const sorted = [...assignments]
+    .map(a => ({ ...a, score: a.done ? -1 : scoreAssignment(a, w) }))
     .sort((a, b) => { if (a.done !== b.done) return a.done ? 1 : -1; return b.score - a.score; });
 
   const container = document.getElementById('list-container');
@@ -518,29 +622,26 @@ function renderList() {
     container.innerHTML = '<div class="empty-state"><i class="ti ti-stack-2" style="font-size:28px;display:block;margin-bottom:8px"></i>No assignments yet — add one above</div>';
     return;
   }
-
-  const active = sorted.filter(a => !a.done);
-  const maxScore = active.length ? active[0].score : 1;
+  const maxScore = (sorted.find(a => !a.done) || {}).score || 1;
   let rankNum = 0;
 
-  container.innerHTML = sorted.map((a) => {
+  container.innerHTML = sorted.map(a => {
     if (!a.done) rankNum++;
-    const rank = a.done ? '✓' : rankNum;
+    const rank      = a.done ? '✓' : rankNum;
     const rankClass = a.done ? 'rank-n' : (rankNum===1?'rank-1':rankNum===2?'rank-2':rankNum===3?'rank-3':'rank-n');
-    const barPct = a.done ? 100 : Math.round((a.score / maxScore) * 100);
-    const barColor = a.done ? '#22c55e' : 'var(--accent)';
-    const due = dueDateLabel(a.dueISO);
-    const rem = Math.max(0, a.time - (a.studied||0));
-    const studiedPct = a.time > 0 ? Math.min(100, Math.round((a.studied/a.time)*100)) : 0;
-    const clOpen = openChecklists.has(a.id) ? 'open' : '';
-    const clDone = (a.checklist||[]).filter(i=>i.done).length;
-    const clTotal = (a.checklist||[]).length;
-
-    const clItems = (a.checklist||[]).map(it => `
+    const barPct    = a.done ? 100 : Math.round((a.score/maxScore)*100);
+    const barColor  = a.done ? '#22c55e' : 'var(--accent)';
+    const due       = dueDateLabel(a.dueISO);
+    const rem       = Math.max(0, a.time-(a.studied||0));
+    const sPct      = a.time > 0 ? Math.min(100, Math.round((a.studied/a.time)*100)) : 0;
+    const clOpen    = openChecklists.has(a.id) ? 'open' : '';
+    const clDone    = (a.checklist||[]).filter(i=>i.done).length;
+    const clTotal   = (a.checklist||[]).length;
+    const clItems   = (a.checklist||[]).map(it => `
       <div class="checklist-item">
-        <input type="checkbox" ${it.done?'checked':''} onchange="toggleClItem(${a.id},${it.id})" />
+        <input type="checkbox" ${it.done?'checked':''} onchange="toggleClItem(${a.id},${it.id})"/>
         <span class="cl-text ${it.done?'checked':''}">${esc(it.text)}</span>
-        <button class="btn-icon btn-sm btn-danger" onclick="deleteClItem(${a.id},${it.id})" title="Remove"><i class="ti ti-x" style="font-size:11px"></i></button>
+        <button class="btn-icon btn-sm btn-danger" onclick="deleteClItem(${a.id},${it.id})"><i class="ti ti-x" style="font-size:11px"></i></button>
       </div>`).join('');
 
     return `
@@ -554,10 +655,10 @@ function renderList() {
               <span class="chip chip-orange"><i class="ti ti-brain"></i>${a.difficulty}/10</span>
               <span class="chip chip-blue"><i class="ti ti-hourglass"></i>${rem.toFixed(1)}h left</span>
               <span class="chip chip-green"><i class="ti ti-mood-smile"></i>${a.enjoyment}/10</span>
-              ${clTotal>0 ? `<span class="chip chip-purple"><i class="ti ti-checklist"></i>${clDone}/${clTotal}</span>` : ''}
+              ${clTotal>0?`<span class="chip chip-purple"><i class="ti ti-checklist"></i>${clDone}/${clTotal}</span>`:''}
             </div>
             <div class="score-bar"><div class="score-bar-fill" style="width:${barPct}%;background:${barColor}"></div></div>
-            ${a.studied>0 ? `<div class="studied-label"><i class="ti ti-clock" style="font-size:11px"></i> ${a.studied.toFixed(1)}h studied (${studiedPct}%)</div>` : ''}
+            ${a.studied>0?`<div class="studied-label"><i class="ti ti-clock" style="font-size:11px"></i> ${a.studied.toFixed(1)}h studied (${sPct}%)</div>`:''}
           </div>
           <div class="score-display">
             <div class="score-num">${a.done?'—':a.score}</div>
@@ -573,7 +674,7 @@ function renderList() {
         <div class="checklist-area ${clOpen}" id="cl-${a.id}">
           ${clItems}
           <div class="checklist-add-row">
-            <input type="text" id="cl-inp-${a.id}" placeholder="Add checklist item..." onkeydown="if(event.key==='Enter')addChecklistItem(${a.id})" />
+            <input type="text" id="cl-inp-${a.id}" placeholder="Add checklist item..." onkeydown="if(event.key==='Enter')addChecklistItem(${a.id})"/>
             <button class="btn-sm btn-primary" onclick="addChecklistItem(${a.id})"><i class="ti ti-plus"></i></button>
           </div>
         </div>
@@ -581,13 +682,182 @@ function renderList() {
   }).join('');
 }
 
-// ─── TIMER ────────────────────────────────────────────────
-let timerInterval = null, timerElapsed = 0, timerRunning = false, timerTaskId = null;
+/* ════════════════════════════════════════════
+   POMODORO ENGINE
+════════════════════════════════════════════ */
+const CIRC = 2 * Math.PI * 92;   // circumference of r=92 circle
 
-function getSessionSec() { return (+document.getElementById('timer-session-len').value || 25) * 60; }
+// State
+let pomoMode      = 'work';   // 'work' | 'short' | 'long'
+let pomoElapsed   = 0;        // seconds elapsed in current interval
+let pomoRunning   = false;
+let pomoInterval  = null;
+let pomoCycle     = 0;        // 0-3 (which pomodoro in the set of 4)
+let pomoTaskId    = null;
+let pomoWorkAccum = 0;        // seconds of work accumulated in current pomodoro (for logging)
 
-function populateTimerSelect() {
-  const sel = document.getElementById('timer-task-select');
+const MODES = {
+  work:  { label: 'Focus',       emoji: '🍅', color: '#7F77DD' },
+  short: { label: 'Short Break', emoji: '☕', color: '#4CAF82' },
+  long:  { label: 'Long Break',  emoji: '🛋️', color: '#F09840' },
+};
+
+function cfgSec(mode) {
+  const map = { work:'cfg-work', short:'cfg-short', long:'cfg-long' };
+  return (+document.getElementById(map[mode]).value || 25) * 60;
+}
+
+// Switch mode manually (via pill buttons)
+function pomoSwitchMode(mode) {
+  if (pomoRunning) pomoPause();
+  pomoMode    = mode;
+  pomoElapsed = 0;
+  pomoWorkAccum = 0;
+  document.querySelectorAll('.pomo-mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('modetab-' + mode).classList.add('active');
+  document.getElementById('pomo-card').dataset.mode = mode;
+  document.getElementById('pomo-mode-lbl').textContent = MODES[mode].label;
+  document.getElementById('pomo-btn-start').style.display = '';
+  document.getElementById('pomo-btn-pause').style.display = 'none';
+  hideBanner();
+  updateRing();
+  updateClockDisplay();
+}
+
+// Auto-advance to next phase
+function pomoAdvance() {
+  pomoPause();
+  // Log the work pomodoro that just finished
+  if (pomoMode === 'work') {
+    logPomodoro();
+    const newCycle = (pomoCycle + 1) % 4;
+    // Decide next mode
+    if (newCycle === 0) {
+      // completed a full set of 4 — long break
+      pomoCycle = 0;
+      setModeAuto('long', '🎉 Great work! Take a long break — you earned it.');
+    } else {
+      pomoCycle = newCycle;
+      setModeAuto('short', '✅ Pomodoro done! Take a short 5-minute break.');
+    }
+  } else {
+    // break finished — back to work
+    setModeAuto('work', '⏰ Break over! Pick up where you left off.');
+  }
+  updateDots();
+}
+
+function setModeAuto(mode, msg) {
+  pomoMode      = mode;
+  pomoElapsed   = 0;
+  pomoWorkAccum = 0;
+  document.querySelectorAll('.pomo-mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('modetab-' + mode).classList.add('active');
+  document.getElementById('pomo-card').dataset.mode = mode;
+  document.getElementById('pomo-mode-lbl').textContent = MODES[mode].label;
+  document.getElementById('pomo-btn-start').style.display = '';
+  document.getElementById('pomo-btn-pause').style.display = 'none';
+  showBanner(msg, mode);
+  updateRing();
+  updateClockDisplay();
+  updateCycleInfo();
+  // Play a soft beep
+  playBeep();
+}
+
+function pomoStart() {
+  if (pomoRunning) return;
+  pomoRunning = true;
+  hideBanner();
+  document.getElementById('pomo-btn-start').style.display = 'none';
+  document.getElementById('pomo-btn-pause').style.display = '';
+  pomoInterval = setInterval(() => {
+    pomoElapsed++;
+    if (pomoMode === 'work') pomoWorkAccum++;
+    updateClockDisplay();
+    updateRing();
+    updatePomoProgress();
+    if (pomoElapsed >= cfgSec(pomoMode)) pomoAdvance();
+  }, 1000);
+}
+
+function pomoPause() {
+  clearInterval(pomoInterval);
+  pomoRunning = false;
+  document.getElementById('pomo-btn-start').style.display = '';
+  document.getElementById('pomo-btn-pause').style.display = 'none';
+}
+
+function pomoReset() {
+  pomoPause();
+  pomoElapsed   = 0;
+  pomoWorkAccum = 0;
+  hideBanner();
+  updateClockDisplay();
+  updateRing();
+}
+
+function pomoSkip() {
+  pomoPause();
+  pomoElapsed = cfgSec(pomoMode);
+  pomoAdvance();
+}
+
+function pomoApplyCfg() {
+  pomoPause();
+  pomoElapsed = 0;
+  updateClockDisplay();
+  updateRing();
+}
+
+// ── Display helpers ──
+function updateClockDisplay() {
+  const total = cfgSec(pomoMode);
+  const rem   = Math.max(0, total - pomoElapsed);
+  const m = String(Math.floor(rem / 60)).padStart(2,'0');
+  const s = String(rem % 60).padStart(2,'0');
+  document.getElementById('pomo-clock').textContent = `${m}:${s}`;
+  document.title = pomoRunning ? `${m}:${s} — ${MODES[pomoMode].label}` : 'Assignment Sorter';
+}
+
+function updateRing() {
+  const total   = cfgSec(pomoMode);
+  const elapsed = Math.min(pomoElapsed, total);
+  const offset  = CIRC * (elapsed / total);
+  document.getElementById('pomo-ring').style.strokeDashoffset = offset;
+}
+
+function updateDots() {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById('pdot-' + i);
+    dot.className = 'pomo-dot';
+    if (i < pomoCycle)        dot.classList.add('filled');
+    else if (i === pomoCycle) dot.classList.add('current');
+  }
+  updateCycleInfo();
+}
+
+function updateCycleInfo() {
+  const el = document.getElementById('pomo-cycle-info');
+  if (pomoMode !== 'work') {
+    el.textContent = pomoMode === 'long' ? '🎉 Long break — recharge fully!' : '☕ Short break — step away for a bit';
+  } else {
+    el.textContent = `Pomodoro ${pomoCycle + 1} of 4 · complete 4 to earn a long break`;
+  }
+}
+
+function showBanner(msg, mode) {
+  const b = document.getElementById('pomo-banner');
+  b.textContent   = msg;
+  b.className     = `pomo-banner show ${mode}`;
+}
+function hideBanner() {
+  document.getElementById('pomo-banner').className = 'pomo-banner';
+}
+
+// ── Task select ──
+function populatePomoSelect() {
+  const sel  = document.getElementById('pomo-select');
   const prev = sel.value;
   sel.innerHTML = '<option value="">— pick an assignment —</option>';
   assignments.filter(a => !a.done).forEach(a => {
@@ -598,88 +868,86 @@ function populateTimerSelect() {
     sel.appendChild(opt);
   });
   sel.value = prev;
-  onTimerTaskChange();
+  onPomoTaskChange();
 }
 
-function onTimerTaskChange() {
-  timerTaskId = +document.getElementById('timer-task-select').value || null;
-  const a = timerTaskId ? assignments.find(a => a.id === timerTaskId) : null;
-  document.getElementById('timer-task-label').textContent = a ? a.name : 'No task selected';
-  updateTimerProgress();
+function onPomoTaskChange() {
+  pomoTaskId = +document.getElementById('pomo-select').value || null;
+  updatePomoProgress();
 }
 
-function updateTimerProgress() {
-  const wrap = document.getElementById('timer-progress-wrap');
-  const a = timerTaskId ? assignments.find(a => a.id === timerTaskId) : null;
+function updatePomoProgress() {
+  const wrap = document.getElementById('pomo-progress-wrap');
+  const a    = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
   if (!a) { wrap.style.display = 'none'; return; }
   wrap.style.display = 'block';
-  const pct = a.time > 0 ? Math.min(100, Math.round((a.studied/a.time)*100)) : 0;
-  document.getElementById('timer-progress-fill').style.width = pct + '%';
-  document.getElementById('timer-progress-text').textContent = `${a.studied.toFixed(1)} / ${a.time.toFixed(1)}h`;
+  const pct = a.time > 0 ? Math.min(100, Math.round((a.studied / a.time) * 100)) : 0;
+  document.getElementById('pomo-progress-fill').style.width = pct + '%';
+  document.getElementById('pomo-progress-text').textContent = `${a.studied.toFixed(1)} / ${a.time.toFixed(1)}h`;
 }
 
-function updateClock() {
-  const rem = Math.max(0, getSessionSec() - timerElapsed);
-  const m = String(Math.floor(rem/60)).padStart(2,'0');
-  const s = String(rem%60).padStart(2,'0');
-  document.getElementById('timer-clock').textContent = `${m}:${s}`;
-}
+// ── Log a completed work pomodoro ──
+function logPomodoro() {
+  const hrs = pomoWorkAccum / 3600;
+  if (hrs < 0.01) return;
 
-function timerStart() {
-  if (timerRunning) return;
-  timerRunning = true;
-  document.getElementById('btn-start').style.display = 'none';
-  document.getElementById('btn-pause').style.display = '';
-  document.getElementById('btn-finish').style.display = '';
-  document.getElementById('timer-clock').classList.add('running');
-  timerInterval = setInterval(() => {
-    timerElapsed++;
-    updateClock();
-    if (timerElapsed >= getSessionSec()) timerPause();
-  }, 1000);
-}
-
-function timerPause() {
-  clearInterval(timerInterval); timerRunning = false;
-  document.getElementById('btn-start').style.display = '';
-  document.getElementById('btn-pause').style.display = 'none';
-  document.getElementById('timer-clock').classList.remove('running');
-}
-
-function timerReset() {
-  timerPause(); timerElapsed = 0; updateClock();
-  document.getElementById('btn-finish').style.display = 'none';
-}
-
-function timerFinish() {
-  timerPause();
-  if (!timerTaskId) { alert('Pick a task first!'); return; }
-  if (timerElapsed === 0) { alert('No time elapsed yet — start the timer first!'); return; }
-  const hrs = timerElapsed / 3600;
-  const a = assignments.find(a => a.id === timerTaskId);
-  if (!a) return;
-  a.studied = (a.studied||0) + hrs;
-  sessionLog.unshift({ task: a.name, min: Math.round(hrs*60), ts: new Date().toLocaleTimeString() });
-
-  if (a.studied >= a.time) {
-    if (confirm(`You've studied all ${a.time.toFixed(1)}h needed for "${a.name}". Mark it as done?`)) a.done = true;
+  const a = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
+  if (a) {
+    a.studied = (a.studied||0) + hrs;
+    if (a.studied >= a.time && !a.done) {
+      const ok = confirm(`You've studied all ${a.time.toFixed(1)}h needed for "${a.name}". Mark it as done?`);
+      if (ok) a.done = true;
+    }
+    save(); renderList(); populatePomoSelect(); updatePomoProgress();
   }
 
-  save(); renderList(); updateTimerProgress(); populateTimerSelect(); renderLog();
-  timerElapsed = 0; updateClock();
-  document.getElementById('btn-finish').style.display = 'none';
+  const label = a ? a.name : 'Untracked session';
+  sessionLog.unshift({
+    task: label,
+    min:  Math.round(hrs * 60),
+    cycle: pomoCycle + 1,
+    ts:   new Date().toLocaleTimeString()
+  });
+  renderLog();
+  pomoWorkAccum = 0;
 }
 
 function renderLog() {
-  const el = document.getElementById('timer-log-list');
-  if (!sessionLog.length) { el.innerHTML = '<div style="font-size:14px;color:var(--text-tertiary)">No sessions logged yet.</div>'; return; }
-  el.innerHTML = sessionLog.map(s => `<div class="log-item"><span>${esc(s.task)}</span><span>${s.min} min · ${s.ts}</span></div>`).join('');
+  const el = document.getElementById('pomo-log');
+  if (!sessionLog.length) {
+    el.innerHTML = '<div style="font-size:14px;color:var(--text-tertiary)">No sessions logged yet.</div>';
+    return;
+  }
+  el.innerHTML = sessionLog.map(s =>
+    `<div class="log-item">
+      <span>🍅 ${esc(s.task)}</span>
+      <span>${s.min} min · ${s.ts}</span>
+    </div>`).join('');
 }
 
-// ─── INIT ─────────────────────────────────────────────────
-updateClock();
+// ── Soft audio beep ──
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sine'; osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.8);
+  } catch(e) { /* audio not available */ }
+}
+
+/* ════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════ */
+updateClockDisplay();
+updateRing();
+updateDots();
 renderList();
-populateTimerSelect();
+populatePomoSelect();
+renderLog();
 </script>
 </body>
 </html>
