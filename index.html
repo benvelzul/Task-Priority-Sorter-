@@ -221,14 +221,91 @@
       .card-actions .btn-icon { padding: 4px; }
       .pomo-cfg { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ── INFO BUTTON ── */
+    .header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .info-btn { width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid var(--border-mid); background: var(--bg-primary); color: var(--text-secondary); font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background .15s, color .15s; padding: 0; margin-top: 4px; }
+    .info-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ── INFO MODAL ── */
+    .info-modal-inner { max-width: 460px; }
+    .info-modal-inner h2 { font-size: 18px; font-weight: 600; margin-bottom: .25rem; }
+    .info-modal-inner .info-tagline { font-size: 13px; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .info-section { margin-bottom: 1rem; }
+    .info-section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--text-tertiary); margin-bottom: .5rem; }
+    .info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: .6rem; }
+    .info-row-icon { font-size: 16px; flex-shrink: 0; width: 28px; text-align: center; margin-top: 1px; }
+    .info-row-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .info-row-text strong { color: var(--text-primary); }
+    .info-divider { height: 0.5px; background: var(--border-light); margin: 1rem 0; }
+    .info-credit { font-size: 13px; color: var(--text-secondary); text-align: center; }
+    .info-version { font-size: 11px; color: var(--text-tertiary); text-align: center; margin-top: 4px; }
+
+    /* ── STUDY TIPS CARD ── */
+    .tips-card { background: linear-gradient(135deg, #f0eeff 0%, #e8f4fd 100%); border: 0.5px solid rgba(127,119,221,0.2); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+    @media (prefers-color-scheme: dark) {
+      .tips-card { background: linear-gradient(135deg, #26244a 0%, #1a2d3d 100%); border-color: rgba(127,119,221,0.25); }
+    }
+    .tips-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
+    .tips-card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); display: flex; align-items: center; gap: 6px; }
+    .tips-nav { display: flex; gap: 4px; }
+    .tips-nav button { padding: 4px 8px; font-size: 12px; border-radius: 6px; border: 0.5px solid rgba(127,119,221,0.3); background: rgba(127,119,221,0.1); color: var(--accent); }
+    .tips-nav button:hover { background: rgba(127,119,221,0.2); }
+    .tip-body { display: flex; gap: 10px; align-items: flex-start; }
+    .tip-emoji { font-size: 24px; flex-shrink: 0; line-height: 1.2; }
+    .tip-content { flex: 1; min-width: 0; }
+    .tip-category { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); opacity: .7; margin-bottom: 2px; }
+    .tip-text { font-size: 13px; color: var(--text-primary); line-height: 1.55; }
+    .tip-dots { display: flex; gap: 4px; margin-top: .6rem; }
+    .tip-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(127,119,221,0.25); transition: background .2s; }
+    .tip-dot.active { background: var(--accent); }
+
+    /* ── WELCOME MODAL ── */
+    .welcome-modal-inner { max-width: 460px; text-align: center; }
+    .welcome-emoji { font-size: 48px; margin-bottom: .5rem; line-height: 1; }
+    .welcome-title { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+    .welcome-sub   { font-size: 14px; color: var(--text-secondary); margin-bottom: 1.5rem; }
+    .welcome-features { text-align: left; display: flex; flex-direction: column; gap: .9rem; margin-bottom: 1.25rem; }
+    .welcome-feature  { display: flex; align-items: flex-start; gap: 12px; }
+    .wf-icon { font-size: 20px; flex-shrink: 0; width: 36px; height: 36px; background: var(--bg-secondary); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .wf-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .wf-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .welcome-divider { height: 0.5px; background: var(--border-light); margin: 1.25rem 0; }
+    .welcome-credit { font-size: 14px; color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .welcome-start-btn { font-size: 15px; padding: 11px 16px; }
+    .welcome-note { font-size: 12px; color: var(--text-tertiary); margin-top: .75rem; }
   </style>
 </head>
 <body>
 <div class="page">
 
   <div class="header">
-    <h1>Assignment priority sorter</h1>
-    <p>Rank your work, track your time, get it done.</p>
+    <div class="header-row">
+      <div>
+        <h1>Assignment priority sorter</h1>
+        <p>Rank your work, track your time, get it done.</p>
+      </div>
+      <button class="info-btn" onclick="openInfoModal()" title="About this app">!</button>
+    </div>
+  </div>
+
+  <!-- STUDY TIPS CARD -->
+  <div class="tips-card">
+    <div class="tips-card-header">
+      <div class="tips-card-title"><i class="ti ti-bulb"></i> Study tip</div>
+      <div class="tips-nav">
+        <button onclick="prevTip()"><i class="ti ti-chevron-left"></i></button>
+        <button onclick="nextTip()"><i class="ti ti-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="tip-body">
+      <div class="tip-emoji" id="tip-emoji">🍅</div>
+      <div class="tip-content">
+        <div class="tip-category" id="tip-category">Pomodoro</div>
+        <div class="tip-text" id="tip-text">Loading tip...</div>
+      </div>
+    </div>
+    <div class="tip-dots" id="tip-dots"></div>
   </div>
 
   <div class="tabs">
@@ -397,6 +474,112 @@
   </div>
 
 </div><!-- /page -->
+
+<!-- ═══════════════ INFO MODAL ═══════════════ -->
+<div class="modal-overlay" id="info-modal">
+  <div class="modal info-modal-inner">
+    <div class="modal-header">
+      <div>
+        <h2>Assignment Priority Sorter</h2>
+        <div class="info-tagline">Your personal study command centre</div>
+      </div>
+      <button class="btn-icon" onclick="closeInfoModal()"><i class="ti ti-x"></i></button>
+    </div>
+
+    <div class="info-section">
+      <div class="info-section-title">How it works</div>
+      <div class="info-row">
+        <div class="info-row-icon">📋</div>
+        <div class="info-row-text"><strong>Add assignments</strong> with a due date, difficulty (0–10), estimated time needed, and how much you enjoy it.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-icon">🏆</div>
+        <div class="info-row-text"><strong>Priority score</strong> is calculated from urgency (due date), difficulty, time remaining, and enjoyment. Enjoyment gives a small bonus — unpleasant tasks rank higher.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-icon">☑️</div>
+        <div class="info-row-text"><strong>Checklists</strong> let you break any assignment into smaller steps. Tick them off as you go.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-icon">✏️</div>
+        <div class="info-row-text"><strong>Edit or delete</strong> any assignment at any time using the icons on each card.</div>
+      </div>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-section">
+      <div class="info-section-title">🍅 Pomodoro timer</div>
+      <div class="info-row">
+        <div class="info-row-icon">⏱️</div>
+        <div class="info-row-text"><strong>25 min focus</strong> → 5 min short break → repeat 4 times → <strong>15 min long break</strong>. Based on the Pomodoro Technique by Francesco Cirillo.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-icon">📊</div>
+        <div class="info-row-text">Time studied is <strong>automatically logged</strong> to your assignment, reducing its "time left" and pushing it down the priority list as you make progress.</div>
+      </div>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-section">
+      <div class="info-section-title">💾 Your data</div>
+      <div class="info-row">
+        <div class="info-row-icon">🔒</div>
+        <div class="info-row-text">All data is saved <strong>locally in your browser</strong> using localStorage. Nothing is sent to any server. Clearing your browser data will erase assignments.</div>
+      </div>
+    </div>
+
+    <div class="info-divider"></div>
+    <div class="info-credit">Made by <strong id="info-maker-name">Benjamin Velez Zuluaga</strong></div>
+    <div class="info-version">v3.0 · Assignment Priority Sorter</div>
+
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="closeInfoModal()"><i class="ti ti-check"></i> Got it</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ WELCOME MODAL ═══════════════ -->
+<div class="modal-overlay open" id="welcome-modal">
+  <div class="modal welcome-modal-inner">
+    <div class="welcome-emoji">🍅</div>
+    <h2 class="welcome-title">Assignment Priority Sorter</h2>
+    <p class="welcome-sub">Your personal study command centre</p>
+
+    <div class="welcome-features">
+      <div class="welcome-feature">
+        <span class="wf-icon"><i class="ti ti-list-check"></i></span>
+        <div>
+          <div class="wf-title">Smart ranking</div>
+          <div class="wf-desc">Add assignments with due dates, difficulty, time needed and enjoyment — the app ranks them by priority automatically.</div>
+        </div>
+      </div>
+      <div class="welcome-feature">
+        <span class="wf-icon"><i class="ti ti-checklist"></i></span>
+        <div>
+          <div class="wf-title">Checklists &amp; progress</div>
+          <div class="wf-desc">Break each assignment into smaller steps and tick them off as you go.</div>
+        </div>
+      </div>
+      <div class="welcome-feature">
+        <span class="wf-icon">🍅</span>
+        <div>
+          <div class="wf-title">Pomodoro timer</div>
+          <div class="wf-desc">25 min focus · 5 min short break · long break every 4 cycles. Time is automatically logged to your assignments.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="welcome-divider"></div>
+    <p class="welcome-credit">Made by <strong id="welcome-maker-name">Benjamin Velez Zuluaga</strong></p>
+
+    <button class="btn-primary btn-full welcome-start-btn" onclick="closeWelcome()">
+      <i class="ti ti-rocket"></i> Let's get started
+    </button>
+    <p class="welcome-note">This message only shows once.</p>
+  </div>
+</div>
 
 <!-- ═══════════════ EDIT MODAL ═══════════════ -->
 <div class="modal-overlay" id="edit-modal">
@@ -940,8 +1123,106 @@ function playBeep() {
 }
 
 /* ════════════════════════════════════════════
+   INFO MODAL
+════════════════════════════════════════════ */
+function openInfoModal() {
+  document.getElementById('info-maker-name').textContent = MAKER_NAME;
+  document.getElementById('info-modal').classList.add('open');
+}
+function closeInfoModal() {
+  document.getElementById('info-modal').classList.remove('open');
+}
+document.getElementById('info-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeInfoModal(); });
+
+/* ════════════════════════════════════════════
+   STUDY TIPS
+════════════════════════════════════════════ */
+const TIPS = [
+  { emoji:'🍅', cat:'Pomodoro', text:'Work in 25-minute focused sprints, then take a 5-minute break. After 4 sprints, reward yourself with a 15-minute rest. Short bursts beat marathon sessions every time.' },
+  { emoji:'🧠', cat:'Memory', text:'Spaced repetition beats cramming. Review material after 1 day, then 3 days, then a week. Each review strengthens the memory trace.' },
+  { emoji:'📵', cat:'Focus', text:'Put your phone face-down or in another room while studying. Even seeing your phone reduces available cognitive capacity — out of sight, out of mind.' },
+  { emoji:'✍️', cat:'Active recall', text:'Instead of re-reading notes, close them and try to write down everything you remember. Struggling to retrieve information is what makes it stick.' },
+  { emoji:'💧', cat:'Wellbeing', text:'Drink water before and during study sessions. Even mild dehydration (1–2%) impairs concentration and short-term memory.' },
+  { emoji:'🌿', cat:'Breaks', text:'Step outside during breaks if you can. Even 5 minutes of natural light and fresh air significantly restores attention and reduces mental fatigue.' },
+  { emoji:'🎯', cat:'Planning', text:'Before each session, write down exactly what you want to accomplish. A specific goal ("finish section 3") beats a vague one ("study biology") every time.' },
+  { emoji:'🌙', cat:'Sleep', text:'Sleep is when your brain consolidates memories. Pulling an all-nighter before an exam is counterproductive — a full night\'s sleep is worth more than those extra hours.' },
+  { emoji:'🔊', cat:'Environment', text:'If you need background sound, try brown noise or lo-fi music without lyrics. Vocals compete with the language-processing part of your brain.' },
+  { emoji:'📝', cat:'Note-taking', text:'The Feynman technique: after studying a topic, explain it in simple terms as if teaching a 12-year-old. Gaps in your explanation show exactly where to study more.' },
+  { emoji:'⚡', cat:'Energy', text:'Tackle your hardest, most important task first — when your willpower and focus are freshest. Save easier tasks for later in the day.' },
+  { emoji:'🗂️', cat:'Organisation', text:'Keep a "brain dump" list nearby. When a distracting thought pops up ("reply to that email"), write it down and immediately return to studying. Your brain will let it go.' },
+  { emoji:'🏃', cat:'Wellbeing', text:'20–30 minutes of exercise before studying increases BDNF — a protein that boosts memory and learning. A brisk walk counts.' },
+  { emoji:'🎓', cat:'Exam prep', text:'Practice under exam conditions — timed, no notes, no phone. Familiarity with the format reduces anxiety and improves actual performance on the day.' },
+  { emoji:'🔁', cat:'Habits', text:'Attach studying to an existing habit: "After I make my morning coffee, I study for 25 minutes." Habit stacking removes the need for willpower to get started.' },
+
+  // NEW TIPS BELOW
+  { emoji:'🧩', cat:'Projects', text:'Break big projects into “micro‑tasks.” Instead of “finish assignment,” try “write intro,” “find 3 sources,” “draft outline.” Small wins build momentum.' },
+  { emoji:'🔥', cat:'Motivation', text:'Use the “2‑minute rule”: if starting feels impossible, commit to just two minutes. Once you begin, inertia takes over and you keep going.' },
+  { emoji:'📚', cat:'Study method', text:'Use the “blur → focus” method: skim the material first to get the big picture, then dive into details. Your brain learns faster when it knows the map.' },
+  { emoji:'🧊', cat:'Anxiety', text:'Try the 5‑4‑3‑2‑1 grounding technique: name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. It pulls you out of spiralling thoughts.' },
+  { emoji:'💬', cat:'Anxiety', text:'Replace “I must do this perfectly” with “I just need to make progress.” Perfectionism fuels anxiety; progress dissolves it.' },
+  { emoji:'📈', cat:'Productivity', text:'Track your study streaks. Seeing consecutive days of progress taps into your brain’s reward system and makes consistency addictive.' },
+  { emoji:'🧺', cat:'Environment', text:'Clear your desk before studying. Visual clutter becomes mental clutter — a tidy space reduces cognitive load and boosts focus.' },
+  { emoji:'🎧', cat:'Focus', text:'Use the “soundtrack switch”: one playlist only for studying. Over time, your brain associates it with deep focus and drops into flow faster.' },
+  { emoji:'🧃', cat:'Wellbeing', text:'Keep a small snack nearby — nuts, fruit, yogurt. Stable blood sugar keeps your brain sharp and prevents the mid‑session crash.' },
+  { emoji:'📆', cat:'Planning', text:'End each study session by writing your next step. Future‑you won’t waste time figuring out where to start.' },
+  { emoji:'🧘', cat:'Anxiety', text:'Try box breathing: inhale 4 seconds, hold 4, exhale 4, hold 4. It calms your nervous system and sharpens focus.' },
+  { emoji:'🔍', cat:'Projects', text:'Define your “success criteria” before starting a project. Knowing what “done” looks like prevents overthinking and scope creep.' },
+  { emoji:'🧱', cat:'Habits', text:'Build “friction” against distractions: log out of social apps, hide shortcuts, or use website blockers. Make the wrong thing harder to do.' },
+  { emoji:'🌤️', cat:'Mindset', text:'Aim for “80% good” instead of “100% perfect.” Consistency beats perfection in every long-term learning goal.' },
+  { emoji:'📤', cat:'Projects', text:'Share early drafts with someone you trust. Feedback at 20% progress saves far more time than feedback at 95%.' },
+  { emoji:'💭', cat:'Anxiety', text:'Name the feeling: “I’m anxious because…” Labeling emotions reduces their intensity and gives you back control.' },
+  { emoji:'🪑', cat:'Posture', text:'Sit with your screen at eye level and feet flat on the floor. Good posture improves alertness and reduces fatigue.' },
+  { emoji:'🧃', cat:'Breaks', text:'Use “active breaks”: stretch, walk, or do light movement. Passive breaks (scrolling) drain energy instead of restoring it.' },
+  { emoji:'📌', cat:'Focus', text:'Set a “study intention” before starting: one sentence about how you want to show up — calm, curious, focused. It primes your mindset.' }
+];
+
+let tipIndex = 0;
+
+function renderTip() {
+  const tip = TIPS[tipIndex];
+  document.getElementById('tip-emoji').textContent    = tip.emoji;
+  document.getElementById('tip-category').textContent = tip.cat;
+  document.getElementById('tip-text').textContent     = tip.text;
+  // dots
+  const dotsEl = document.getElementById('tip-dots');
+  dotsEl.innerHTML = TIPS.map((_, i) =>
+    `<div class="tip-dot ${i === tipIndex ? 'active' : ''}"></div>`
+  ).join('');
+}
+
+function nextTip() { tipIndex = (tipIndex + 1) % TIPS.length; renderTip(); }
+function prevTip() { tipIndex = (tipIndex - 1 + TIPS.length) % TIPS.length; renderTip(); }
+
+// Auto-rotate every 30 seconds
+setInterval(nextTip, 30000);
+
+// Start on a random tip
+tipIndex = Math.floor(Math.random() * TIPS.length);
+
+/* ════════════════════════════════════════════
+   WELCOME MODAL
+════════════════════════════════════════════ */
+const MAKER_NAME = 'Benjamin Velez Zuluaga'; // ← change this to your name!
+
+function initWelcome() {
+  document.getElementById('welcome-maker-name').textContent = MAKER_NAME;
+  const seen = localStorage.getItem('asgn-welcome-seen');
+  if (seen) {
+    document.getElementById('welcome-modal').classList.remove('open');
+  }
+  // if not seen, it's already open (open class set in HTML)
+}
+
+function closeWelcome() {
+  localStorage.setItem('asgn-welcome-seen', '1');
+  document.getElementById('welcome-modal').classList.remove('open');
+}
+
+/* ════════════════════════════════════════════
    INIT
 ════════════════════════════════════════════ */
+initWelcome();
+renderTip();
 updateClockDisplay();
 updateRing();
 updateDots();
