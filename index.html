@@ -144,13 +144,9 @@
     /* ══════════════════════════════════════
        POMODORO TIMER
     ══════════════════════════════════════ */
-
-    /* mode pill switcher */
     .pomo-modes { display: flex; gap: 4px; margin-bottom: 1.25rem; background: var(--bg-secondary); border-radius: var(--radius-md); padding: 3px; }
     .pomo-mode-btn { flex: 1; padding: 6px 4px; border: none; background: transparent; border-radius: 7px; font-size: 12px; font-family: var(--font); color: var(--text-secondary); cursor: pointer; transition: all .15s; font-weight: 500; }
     .pomo-mode-btn.active { background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
-
-    /* ring */
     .pomo-ring-wrap { position: relative; width: 210px; height: 210px; margin: 0 auto 1rem; }
     .pomo-ring-wrap svg { transform: rotate(-90deg); }
     .pomo-ring-bg   { fill: none; stroke: var(--border-light); stroke-width: 10; }
@@ -158,32 +154,22 @@
     .pomo-ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
     .pomo-clock { font-size: 52px; font-weight: 300; letter-spacing: -2px; font-variant-numeric: tabular-nums; line-height: 1; transition: color .4s; }
     .pomo-mode-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-tertiary); font-weight: 600; }
-
-    /* cycle dots */
     .pomo-dots { display: flex; gap: 8px; justify-content: center; margin-bottom: .4rem; }
     .pomo-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--border-mid); transition: background .3s, transform .3s; }
     .pomo-dot.filled  { background: var(--c-work); transform: scale(1.1); }
     .pomo-dot.current { background: var(--c-work); opacity: .35; }
     .pomo-cycle-info { text-align: center; font-size: 12px; color: var(--text-tertiary); margin-bottom: 1rem; }
-
-    /* controls */
     .pomo-controls { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
     .pomo-btn-start  { background: var(--accent); color: #fff; border-color: var(--accent); }
     .pomo-btn-start:hover { background: #6e66cc; }
-
-    /* task + progress */
     .pomo-task-row { margin-bottom: 1rem; }
     .pomo-progress-wrap { margin-bottom: 1rem; }
     .pomo-progress-lbl  { font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; display: flex; justify-content: space-between; }
     .pomo-progress-bar  { height: 5px; background: var(--border-light); border-radius: 3px; }
     .pomo-progress-fill { height: 100%; border-radius: 3px; transition: width .5s; }
-
-    /* settings row */
     .pomo-cfg { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .75rem; padding-top: 1rem; border-top: 0.5px solid var(--border-light); }
     .pomo-cfg-item label { font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 4px; }
     .pomo-cfg-item input { font-size: 13px; text-align: center; }
-
-    /* per-mode accent colours */
     .pomo-card[data-mode=work]  .pomo-ring-fill { stroke: var(--c-work);  }
     .pomo-card[data-mode=work]  .pomo-clock     { color:  var(--c-work);  }
     .pomo-card[data-mode=work]  .pomo-progress-fill { background: var(--c-work); }
@@ -193,15 +179,11 @@
     .pomo-card[data-mode=long]  .pomo-ring-fill { stroke: var(--c-long);  }
     .pomo-card[data-mode=long]  .pomo-clock     { color:  var(--c-long);  }
     .pomo-card[data-mode=long]  .pomo-progress-fill { background: var(--c-long); }
-
-    /* notification banner */
     .pomo-banner { display: none; text-align: center; padding: 10px 16px; border-radius: var(--radius-md); font-size: 14px; font-weight: 500; margin-bottom: 1rem; }
     .pomo-banner.show { display: block; }
     .pomo-banner.work  { background: #EEEAFC; color: #3D2D9B; }
     .pomo-banner.short { background: #EAF3DE; color: #27500A; }
     .pomo-banner.long  { background: #FAEEDA; color: #633806; }
-
-    /* log */
     .log-item { font-size: 13px; color: var(--text-secondary); padding: 6px 0; border-bottom: 0.5px solid var(--border-light); display: flex; justify-content: space-between; gap: 8px; }
     .log-item:last-child { border-bottom: none; }
 
@@ -260,6 +242,20 @@
     .tip-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(127,119,221,0.25); transition: background .2s; }
     .tip-dot.active { background: var(--accent); }
 
+    /* ── POMO CHECKLIST ── */
+    #pomo-checklist-wrap { margin-bottom: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 0.5px solid var(--border-light); }
+    .pomo-cl-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
+    .pomo-cl-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+    .pomo-cl-count { font-size: 12px; color: var(--text-tertiary); }
+    .pomo-cl-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 0.5px solid var(--border-light); }
+    .pomo-cl-item:last-of-type { border-bottom: none; }
+    .pomo-cl-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
+    .pomo-cl-item-text { font-size: 14px; flex: 1; transition: color .15s; }
+    .pomo-cl-item-text.checked { text-decoration: line-through; color: var(--text-tertiary); }
+    .pomo-cl-empty { font-size: 13px; color: var(--text-tertiary); padding: 4px 0 8px; }
+    .pomo-cl-add-row { display: flex; gap: 6px; margin-top: 8px; }
+    .pomo-cl-add-row input { font-size: 13px; }
+
     /* ── WELCOME MODAL ── */
     .welcome-modal-inner { max-width: 460px; text-align: center; }
     .welcome-emoji { font-size: 48px; margin-bottom: .5rem; line-height: 1; }
@@ -290,12 +286,13 @@
   </div>
 
   <!-- STUDY TIPS CARD -->
-  <div class="tips-card">
+  <div class="tips-card" id="tips-card">
     <div class="tips-card-header">
       <div class="tips-card-title"><i class="ti ti-bulb"></i> Study tip</div>
       <div class="tips-nav">
-        <button onclick="prevTip()"><i class="ti ti-chevron-left"></i></button>
-        <button onclick="nextTip()"><i class="ti ti-chevron-right"></i></button>
+        <button onclick="prevTip()" title="Previous tip"><i class="ti ti-chevron-left"></i></button>
+        <button onclick="nextTip()" title="Next tip"><i class="ti ti-chevron-right"></i></button>
+        <button onclick="hideTipsCard()" title="Hide tips" style="margin-left:2px"><i class="ti ti-eye-off"></i></button>
       </div>
     </div>
     <div class="tip-body">
@@ -307,6 +304,11 @@
     </div>
     <div class="tip-dots" id="tip-dots"></div>
   </div>
+
+  <!-- show tips button (visible when tips are hidden) -->
+  <button id="show-tips-btn" onclick="showTipsCard()" style="display:none;margin-bottom:1.5rem" title="Show study tips">
+    <i class="ti ti-bulb"></i> Show study tips
+  </button>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('assignments',this)"><i class="ti ti-list-check"></i> <span>Assignments</span></button>
@@ -450,6 +452,19 @@
         </div>
       </div>
 
+      <!-- assignment checklist -->
+      <div id="pomo-checklist-wrap" style="display:none">
+        <div class="pomo-cl-header">
+          <span class="pomo-cl-title"><i class="ti ti-checklist"></i> Task checklist</span>
+          <span class="pomo-cl-count" id="pomo-cl-count"></span>
+        </div>
+        <div id="pomo-cl-items"></div>
+        <div class="pomo-cl-add-row">
+          <input type="text" id="pomo-cl-input" placeholder="Add a step..." onkeydown="if(event.key==='Enter')pomoAddClItem()" />
+          <button class="btn-sm btn-primary" onclick="pomoAddClItem()"><i class="ti ti-plus"></i></button>
+        </div>
+      </div>
+
       <!-- settings -->
       <div class="pomo-cfg">
         <div class="pomo-cfg-item">
@@ -516,7 +531,7 @@
       </div>
       <div class="info-row">
         <div class="info-row-icon">📊</div>
-        <div class="info-row-text">Time studied is <strong>automatically logged</strong> to your assignment, reducing its "time left" and pushing it down the priority list as you make progress.</div>
+        <div class="info-row-text">Time studied is <strong>automatically saved every 5 minutes</strong> to your assignment, reducing its "time left" and pushing it down the priority list as you make progress.</div>
       </div>
     </div>
 
@@ -532,7 +547,7 @@
 
     <div class="info-divider"></div>
     <div class="info-credit">Made by <strong id="info-maker-name">Benjamin Velez Zuluaga</strong></div>
-    <div class="info-version">v3.0 · Assignment Priority Sorter</div>
+    <div class="info-version">v4.5 · Assignment Priority Sorter</div>
 
     <div class="modal-footer">
       <button class="btn-primary" onclick="closeInfoModal()"><i class="ti ti-check"></i> Got it</button>
@@ -868,16 +883,15 @@ function renderList() {
 /* ════════════════════════════════════════════
    POMODORO ENGINE
 ════════════════════════════════════════════ */
-const CIRC = 2 * Math.PI * 92;   // circumference of r=92 circle
+const CIRC = 2 * Math.PI * 92;
 
-// State
-let pomoMode      = 'work';   // 'work' | 'short' | 'long'
-let pomoElapsed   = 0;        // seconds elapsed in current interval
+let pomoMode      = 'work';
+let pomoElapsed   = 0;
 let pomoRunning   = false;
 let pomoInterval  = null;
-let pomoCycle     = 0;        // 0-3 (which pomodoro in the set of 4)
+let pomoCycle     = 0;
 let pomoTaskId    = null;
-let pomoWorkAccum = 0;        // seconds of work accumulated in current pomodoro (for logging)
+let pomoWorkAccum = 0;
 
 const MODES = {
   work:  { label: 'Focus',       emoji: '🍅', color: '#7F77DD' },
@@ -890,7 +904,6 @@ function cfgSec(mode) {
   return (+document.getElementById(map[mode]).value || 25) * 60;
 }
 
-// Switch mode manually (via pill buttons)
 function pomoSwitchMode(mode) {
   if (pomoRunning) pomoPause();
   pomoMode    = mode;
@@ -907,16 +920,12 @@ function pomoSwitchMode(mode) {
   updateClockDisplay();
 }
 
-// Auto-advance to next phase
 function pomoAdvance() {
   pomoPause();
-  // Log the work pomodoro that just finished
   if (pomoMode === 'work') {
     logPomodoro();
     const newCycle = (pomoCycle + 1) % 4;
-    // Decide next mode
     if (newCycle === 0) {
-      // completed a full set of 4 — long break
       pomoCycle = 0;
       setModeAuto('long', '🎉 Great work! Take a long break — you earned it.');
     } else {
@@ -924,7 +933,6 @@ function pomoAdvance() {
       setModeAuto('short', '✅ Pomodoro done! Take a short 5-minute break.');
     }
   } else {
-    // break finished — back to work
     setModeAuto('work', '⏰ Break over! Pick up where you left off.');
   }
   updateDots();
@@ -944,7 +952,6 @@ function setModeAuto(mode, msg) {
   updateRing();
   updateClockDisplay();
   updateCycleInfo();
-  // Play a soft beep
   playBeep();
 }
 
@@ -956,7 +963,13 @@ function pomoStart() {
   document.getElementById('pomo-btn-pause').style.display = '';
   pomoInterval = setInterval(() => {
     pomoElapsed++;
-    if (pomoMode === 'work') pomoWorkAccum++;
+    if (pomoMode === 'work') {
+      pomoWorkAccum++;
+      // Flush progress to assignment every 5 minutes (300 seconds)
+      if (pomoWorkAccum > 0 && pomoWorkAccum % 300 === 0) {
+        flushPomoProgress();
+      }
+    }
     updateClockDisplay();
     updateRing();
     updatePomoProgress();
@@ -993,7 +1006,6 @@ function pomoApplyCfg() {
   updateRing();
 }
 
-// ── Display helpers ──
 function updateClockDisplay() {
   const total = cfgSec(pomoMode);
   const rem   = Math.max(0, total - pomoElapsed);
@@ -1031,14 +1043,13 @@ function updateCycleInfo() {
 
 function showBanner(msg, mode) {
   const b = document.getElementById('pomo-banner');
-  b.textContent   = msg;
-  b.className     = `pomo-banner show ${mode}`;
+  b.textContent = msg;
+  b.className   = `pomo-banner show ${mode}`;
 }
 function hideBanner() {
   document.getElementById('pomo-banner').className = 'pomo-banner';
 }
 
-// ── Task select ──
 function populatePomoSelect() {
   const sel  = document.getElementById('pomo-select');
   const prev = sel.value;
@@ -1057,6 +1068,7 @@ function populatePomoSelect() {
 function onPomoTaskChange() {
   pomoTaskId = +document.getElementById('pomo-select').value || null;
   updatePomoProgress();
+  renderPomoChecklist();
 }
 
 function updatePomoProgress() {
@@ -1069,29 +1081,90 @@ function updatePomoProgress() {
   document.getElementById('pomo-progress-text').textContent = `${a.studied.toFixed(1)} / ${a.time.toFixed(1)}h`;
 }
 
+// ── Pomo checklist ──
+function renderPomoChecklist() {
+  const wrap = document.getElementById('pomo-checklist-wrap');
+  const a    = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
+  if (!a) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+
+  const cl     = a.checklist || [];
+  const done   = cl.filter(i => i.done).length;
+  document.getElementById('pomo-cl-count').textContent = cl.length ? `${done}/${cl.length} done` : '';
+
+  const itemsEl = document.getElementById('pomo-cl-items');
+  if (!cl.length) {
+    itemsEl.innerHTML = '<div class="pomo-cl-empty">No steps yet — add one below.</div>';
+    return;
+  }
+  itemsEl.innerHTML = cl.map(it => `
+    <div class="pomo-cl-item">
+      <input type="checkbox" ${it.done ? 'checked' : ''} onchange="pomoToggleClItem(${a.id}, ${it.id})" />
+      <span class="pomo-cl-item-text ${it.done ? 'checked' : ''}">${esc(it.text)}</span>
+    </div>`).join('');
+}
+
+function pomoToggleClItem(aId, itemId) {
+  const a = assignments.find(a => a.id === aId); if (!a) return;
+  const it = a.checklist.find(i => i.id === itemId); if (!it) return;
+  it.done = !it.done;
+  save();
+  renderPomoChecklist();
+  renderList(); // keep assignment tab in sync
+}
+
+function pomoAddClItem() {
+  const inp  = document.getElementById('pomo-cl-input');
+  const text = inp.value.trim(); if (!text) return;
+  const a    = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
+  if (!a) return;
+  a.checklist.push({ id: Date.now(), text, done: false });
+  inp.value = '';
+  save();
+  renderPomoChecklist();
+  renderList();
+}
+
+// ── Flush incremental progress every 5 minutes ──
+function flushPomoProgress() {
+  const a = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
+  if (!a || pomoWorkAccum <= 0) return;
+  const hrsToFlush = pomoWorkAccum / 3600;
+  a.studied = (a.studied||0) + hrsToFlush;
+  pomoWorkAccum = 0; // reset — will accumulate fresh from here
+  save();
+  renderList();
+  populatePomoSelect();
+  updatePomoProgress();
+}
+
 // ── Log a completed work pomodoro ──
 function logPomodoro() {
-  const hrs = pomoWorkAccum / 3600;
-  if (hrs < 0.01) return;
-
-  const a = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
-  if (a) {
-    a.studied = (a.studied||0) + hrs;
-    if (a.studied >= a.time && !a.done) {
-      const ok = confirm(`You've studied all ${a.time.toFixed(1)}h needed for "${a.name}". Mark it as done?`);
-      if (ok) a.done = true;
+  // flush any remaining accumulated time first
+  const remaining = pomoWorkAccum;
+  if (remaining > 0) {
+    const a = pomoTaskId ? assignments.find(a => a.id === pomoTaskId) : null;
+    if (a) {
+      a.studied = (a.studied||0) + (remaining / 3600);
+      if (a.studied >= a.time && !a.done) {
+        const ok = confirm(`You've studied all ${a.time.toFixed(1)}h needed for "${a.name}". Mark it as done?`);
+        if (ok) a.done = true;
+      }
+      save(); renderList(); populatePomoSelect(); updatePomoProgress();
     }
-    save(); renderList(); populatePomoSelect(); updatePomoProgress();
   }
 
-  const label = a ? a.name : 'Untracked session';
-  sessionLog.unshift({
-    task: label,
-    min:  Math.round(hrs * 60),
-    cycle: pomoCycle + 1,
-    ts:   new Date().toLocaleTimeString()
-  });
-  renderLog();
+  const totalHrs = (remaining / 3600);
+  const label = (pomoTaskId ? assignments.find(a => a.id === pomoTaskId)?.name : null) || 'Untracked session';
+  if (totalHrs >= 0.01) {
+    sessionLog.unshift({
+      task:  label,
+      min:   Math.round(totalHrs * 60),
+      cycle: pomoCycle + 1,
+      ts:    new Date().toLocaleTimeString()
+    });
+    renderLog();
+  }
   pomoWorkAccum = 0;
 }
 
@@ -1108,7 +1181,6 @@ function renderLog() {
     </div>`).join('');
 }
 
-// ── Soft audio beep ──
 function playBeep() {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1126,7 +1198,6 @@ function playBeep() {
    INFO MODAL
 ════════════════════════════════════════════ */
 function openInfoModal() {
-  document.getElementById('info-maker-name').textContent = MAKER_NAME;
   document.getElementById('info-modal').classList.add('open');
 }
 function closeInfoModal() {
@@ -1153,27 +1224,25 @@ const TIPS = [
   { emoji:'🏃', cat:'Wellbeing', text:'20–30 minutes of exercise before studying increases BDNF — a protein that boosts memory and learning. A brisk walk counts.' },
   { emoji:'🎓', cat:'Exam prep', text:'Practice under exam conditions — timed, no notes, no phone. Familiarity with the format reduces anxiety and improves actual performance on the day.' },
   { emoji:'🔁', cat:'Habits', text:'Attach studying to an existing habit: "After I make my morning coffee, I study for 25 minutes." Habit stacking removes the need for willpower to get started.' },
-
-  // NEW TIPS BELOW
-  { emoji:'🧩', cat:'Projects', text:'Break big projects into “micro‑tasks.” Instead of “finish assignment,” try “write intro,” “find 3 sources,” “draft outline.” Small wins build momentum.' },
-  { emoji:'🔥', cat:'Motivation', text:'Use the “2‑minute rule”: if starting feels impossible, commit to just two minutes. Once you begin, inertia takes over and you keep going.' },
-  { emoji:'📚', cat:'Study method', text:'Use the “blur → focus” method: skim the material first to get the big picture, then dive into details. Your brain learns faster when it knows the map.' },
+  { emoji:'🧩', cat:'Projects', text:'Break big projects into "micro‑tasks." Instead of "finish assignment," try "write intro," "find 3 sources," "draft outline." Small wins build momentum.' },
+  { emoji:'🔥', cat:'Motivation', text:'Use the "2‑minute rule": if starting feels impossible, commit to just two minutes. Once you begin, inertia takes over and you keep going.' },
+  { emoji:'📚', cat:'Study method', text:'Use the "blur → focus" method: skim the material first to get the big picture, then dive into details. Your brain learns faster when it knows the map.' },
   { emoji:'🧊', cat:'Anxiety', text:'Try the 5‑4‑3‑2‑1 grounding technique: name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. It pulls you out of spiralling thoughts.' },
-  { emoji:'💬', cat:'Anxiety', text:'Replace “I must do this perfectly” with “I just need to make progress.” Perfectionism fuels anxiety; progress dissolves it.' },
-  { emoji:'📈', cat:'Productivity', text:'Track your study streaks. Seeing consecutive days of progress taps into your brain’s reward system and makes consistency addictive.' },
+  { emoji:'💬', cat:'Anxiety', text:'Replace "I must do this perfectly" with "I just need to make progress." Perfectionism fuels anxiety; progress dissolves it.' },
+  { emoji:'📈', cat:'Productivity', text:'Track your study streaks. Seeing consecutive days of progress taps into your brain\'s reward system and makes consistency addictive.' },
   { emoji:'🧺', cat:'Environment', text:'Clear your desk before studying. Visual clutter becomes mental clutter — a tidy space reduces cognitive load and boosts focus.' },
-  { emoji:'🎧', cat:'Focus', text:'Use the “soundtrack switch”: one playlist only for studying. Over time, your brain associates it with deep focus and drops into flow faster.' },
+  { emoji:'🎧', cat:'Focus', text:'Use the "soundtrack switch": one playlist only for studying. Over time, your brain associates it with deep focus and drops into flow faster.' },
   { emoji:'🧃', cat:'Wellbeing', text:'Keep a small snack nearby — nuts, fruit, yogurt. Stable blood sugar keeps your brain sharp and prevents the mid‑session crash.' },
-  { emoji:'📆', cat:'Planning', text:'End each study session by writing your next step. Future‑you won’t waste time figuring out where to start.' },
+  { emoji:'📆', cat:'Planning', text:'End each study session by writing your next step. Future‑you won\'t waste time figuring out where to start.' },
   { emoji:'🧘', cat:'Anxiety', text:'Try box breathing: inhale 4 seconds, hold 4, exhale 4, hold 4. It calms your nervous system and sharpens focus.' },
-  { emoji:'🔍', cat:'Projects', text:'Define your “success criteria” before starting a project. Knowing what “done” looks like prevents overthinking and scope creep.' },
-  { emoji:'🧱', cat:'Habits', text:'Build “friction” against distractions: log out of social apps, hide shortcuts, or use website blockers. Make the wrong thing harder to do.' },
-  { emoji:'🌤️', cat:'Mindset', text:'Aim for “80% good” instead of “100% perfect.” Consistency beats perfection in every long-term learning goal.' },
+  { emoji:'🔍', cat:'Projects', text:'Define your "success criteria" before starting a project. Knowing what "done" looks like prevents overthinking and scope creep.' },
+  { emoji:'🧱', cat:'Habits', text:'Build "friction" against distractions: log out of social apps, hide shortcuts, or use website blockers. Make the wrong thing harder to do.' },
+  { emoji:'🌤️', cat:'Mindset', text:'Aim for "80% good" instead of "100% perfect." Consistency beats perfection in every long-term learning goal.' },
   { emoji:'📤', cat:'Projects', text:'Share early drafts with someone you trust. Feedback at 20% progress saves far more time than feedback at 95%.' },
-  { emoji:'💭', cat:'Anxiety', text:'Name the feeling: “I’m anxious because…” Labeling emotions reduces their intensity and gives you back control.' },
+  { emoji:'💭', cat:'Anxiety', text:'Name the feeling: "I\'m anxious because…" Labeling emotions reduces their intensity and gives you back control.' },
   { emoji:'🪑', cat:'Posture', text:'Sit with your screen at eye level and feet flat on the floor. Good posture improves alertness and reduces fatigue.' },
-  { emoji:'🧃', cat:'Breaks', text:'Use “active breaks”: stretch, walk, or do light movement. Passive breaks (scrolling) drain energy instead of restoring it.' },
-  { emoji:'📌', cat:'Focus', text:'Set a “study intention” before starting: one sentence about how you want to show up — calm, curious, focused. It primes your mindset.' }
+  { emoji:'🧃', cat:'Breaks', text:'Use "active breaks": stretch, walk, or do light movement. Passive breaks (scrolling) drain energy instead of restoring it.' },
+  { emoji:'📌', cat:'Focus', text:'Set a "study intention" before starting: one sentence about how you want to show up — calm, curious, focused. It primes your mindset.' }
 ];
 
 let tipIndex = 0;
@@ -1183,7 +1252,6 @@ function renderTip() {
   document.getElementById('tip-emoji').textContent    = tip.emoji;
   document.getElementById('tip-category').textContent = tip.cat;
   document.getElementById('tip-text').textContent     = tip.text;
-  // dots
   const dotsEl = document.getElementById('tip-dots');
   dotsEl.innerHTML = TIPS.map((_, i) =>
     `<div class="tip-dot ${i === tipIndex ? 'active' : ''}"></div>`
@@ -1199,10 +1267,28 @@ setInterval(nextTip, 30000);
 // Start on a random tip
 tipIndex = Math.floor(Math.random() * TIPS.length);
 
+// ── Hide / show tips card ──
+function hideTipsCard() {
+  document.getElementById('tips-card').style.display = 'none';
+  document.getElementById('show-tips-btn').style.display = '';
+  localStorage.setItem('asgn-tips-hidden', '1');
+}
+function showTipsCard() {
+  document.getElementById('tips-card').style.display = '';
+  document.getElementById('show-tips-btn').style.display = 'none';
+  localStorage.removeItem('asgn-tips-hidden');
+}
+function initTipsVisibility() {
+  if (localStorage.getItem('asgn-tips-hidden')) {
+    document.getElementById('tips-card').style.display = 'none';
+    document.getElementById('show-tips-btn').style.display = '';
+  }
+}
+
 /* ════════════════════════════════════════════
    WELCOME MODAL
 ════════════════════════════════════════════ */
-const MAKER_NAME = 'Benjamin Velez Zuluaga'; // ← change this to your name!
+const MAKER_NAME = 'Benjamin Velez Zuluaga';
 
 function initWelcome() {
   document.getElementById('welcome-maker-name').textContent = MAKER_NAME;
@@ -1210,7 +1296,6 @@ function initWelcome() {
   if (seen) {
     document.getElementById('welcome-modal').classList.remove('open');
   }
-  // if not seen, it's already open (open class set in HTML)
 }
 
 function closeWelcome() {
@@ -1222,12 +1307,14 @@ function closeWelcome() {
    INIT
 ════════════════════════════════════════════ */
 initWelcome();
+initTipsVisibility();
 renderTip();
 updateClockDisplay();
 updateRing();
 updateDots();
 renderList();
 populatePomoSelect();
+renderPomoChecklist();
 renderLog();
 </script>
 </body>
